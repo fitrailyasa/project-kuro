@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Controllers\Client;
+
+use App\Http\Controllers\Controller;
+use App\Models\Booking;
+use App\Models\Category;
+use Illuminate\Http\Request;
+
+class ClientBookingController extends Controller
+{
+    public function index()
+    {
+        $bookings = Booking::all();
+        return view('client.booking.index', compact('bookings'));
+    }
+
+    public function show(string $id)
+    {
+        $booking = Booking::findOrFail($id);
+        return view('client.booking.show', compact('booking'));
+    }
+}
