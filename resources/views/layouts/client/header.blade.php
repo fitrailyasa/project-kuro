@@ -1,4 +1,4 @@
-<header class="header px-3 border-bottom bg-dark text-white mb-3 fixed-top">
+<header class="header px-3 bg-dark text-white mb-3 fixed-top">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
             <div class="d-flex align-items-center justify-content-center">

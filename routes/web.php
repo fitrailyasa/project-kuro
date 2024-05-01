@@ -12,8 +12,7 @@ use App\Http\Controllers\Admin\AdminBookingSController;
 use App\Http\Controllers\Admin\AdminPackagePController;
 use App\Http\Controllers\Admin\AdminPackageSController;
 use App\Http\Controllers\Admin\AdminCategoryController;
-use App\Http\Controllers\Admin\AdminTagController;
-use App\Http\Controllers\Admin\AdminDataController;
+use App\Http\Controllers\Admin\AdminInventoryController;
 use App\Http\Controllers\Client\ClientStudioController;
 use App\Http\Controllers\Client\ClientPhotographerController;
 use App\Http\Controllers\Client\ClientBookingController;
@@ -26,20 +25,27 @@ Route::get('/studio', [ClientStudioController::class, 'index'])->name('studio');
 Route::get('/studio/{id}', [ClientStudioController::class, 'show'])->name('studio.show');
 Route::get('/photographer', [ClientPhotographerController::class, 'index'])->name('photographer');
 Route::get('/photographer/{id}', [ClientPhotographerController::class, 'show'])->name('photographer.show');
-Route::get('/booking', [ClientBookingController::class, 'index'])->name('booking');
-Route::get('/booking/{id}', [ClientBookingController::class, 'show'])->name('booking.show');
 
-Auth::routes();
+Auth::routes([
+  'register' => false,
+  'reset' => false,
+  'verify' => false,
+  'confirm' => false,
+  'logout' => false
+]);
 
 Route::middleware(['auth'])->group(function () {
-
+  
   Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+  // Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
   Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
+  
   Route::get('/studio/{id}/order', [ClientStudioController::class, 'order'])->name('studio.order');
-  Route::post('/studio/{id}/order', [ClientStudioController::class, 'store'])->name('studio.store');
+  Route::post('/studio/order', [ClientStudioController::class, 'checkout'])->name('studio.checkout');
   Route::get('/photographer/{id}/order', [ClientPhotographerController::class, 'order'])->name('photographer.order');
-  Route::post('/photographer/{id}/order', [ClientPhotographerController::class, 'store'])->name('photographer.store');
+  Route::post('/photographer/order', [ClientPhotographerController::class, 'checkout'])->name('photographer.checkout');
+  Route::get('/booking', [ClientBookingController::class, 'index'])->name('booking');
+  Route::get('/booking/{id}', [ClientBookingController::class, 'show'])->name('booking.show');
 
   // CMS ADMINITRASTOR
   Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
@@ -83,9 +89,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/category', [AdminCategoryController::class, 'store'])->name('category.store');
     Route::put('/category/{id}/update', [AdminCategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{id}/destroy', [AdminCategoryController::class, 'destroy'])->name('category.destroy');
-    Route::post('/category/import', [AdminCategoryController::class, 'import'])->name('category.import');
-    Route::get('/category/export', [AdminCategoryController::class, 'export'])->name('category.export');
-    Route::delete('/category/deleteAll', [AdminCategoryController::class, 'destroyAll'])->name('category.destroyAll');
+    
+    // CRUD INVENTORY
+    Route::get('/inventory', [AdminInventoryController::class, 'index'])->name('inventory.index');
+    Route::post('/inventory', [AdminInventoryController::class, 'store'])->name('inventory.store');
+    Route::put('/inventory/{id}/update', [AdminInventoryController::class, 'update'])->name('inventory.update');
+    Route::delete('/inventory/{id}/destroy', [AdminInventoryController::class, 'destroy'])->name('inventory.destroy');
     
   });
   

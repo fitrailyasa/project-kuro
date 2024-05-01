@@ -28,6 +28,7 @@ class AdminUserController extends Controller
                 'name' => 'required|max:255',
                 'email' => 'required|max:255|unique:users,email',
                 'no_hp' => 'required',
+                'alamat' => 'required',
                 'password' => 'required',
                 'role' => 'required'
             ],
@@ -38,6 +39,7 @@ class AdminUserController extends Controller
                 'email.max' => 'Email maksimal 255 karakter!',
                 'email.unique' => 'Email sudah terdaftar!',
                 'no_hp.required' => 'No HP harus diisi!',
+                'alamat.required' => 'Alamat harus diisi!',
                 'password.required' => 'Password harus diisi!',
                 'role.required' => 'Roles harus diisi!'
             ]
@@ -47,6 +49,7 @@ class AdminUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
             'password' => Hash::make($request->password),
             'role' => $request->role
         ]);
@@ -63,6 +66,7 @@ class AdminUserController extends Controller
                 'name' => 'required|max:255',
                 'email' => 'required|max:255',
                 'no_hp' => 'required',
+                'alamat' => 'required',
                 'role' => 'required'
             ],
             [
@@ -71,6 +75,7 @@ class AdminUserController extends Controller
                 'email.required' => 'Email harus diisi!',
                 'email.max' => 'Email maksimal 255 karakter!',
                 'no_hp.required' => 'No HP harus diisi!',
+                'alamat.required' => 'Alamat harus diisi!',
                 'role.required' => 'Roles harus diisi!'
             ]
         );
@@ -81,6 +86,7 @@ class AdminUserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'no_hp' => $request->no_hp,
+                'alamat' => $request->alamat,
                 'password' => Hash::make($request->password),
                 'role' => $request->role
             ]

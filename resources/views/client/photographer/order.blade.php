@@ -10,10 +10,10 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('photographer.store', $photographer->id) }}" method="POST" class="row">
+                    <form action="{{ route('photographer.checkout') }}" method="POST" class="row">
                         @csrf
-                        <h3 class="text-center mb-3">{{ $photographer->name }}</h3>
-                        <input type="hidden" name="package_id" id="package_id" {{ $photographer->id }}>
+                        <h3 class="text-center mb-3">{{ $package->name }}</h3>
+                        <input type="hidden" name="package_id" id="package_id" value="{{ $package->id }}">
                         <div class="col-md-4">
                             <div class="card-header text-center mb-2">
                                 <div class="fw-bold">{{ __('Tentukan Tanggal') }}</div>
@@ -328,7 +328,7 @@
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Nama') }}</label>
                                 <input type="text" class="form-control" placeholder="name" name="name"
-                                    id="name" value="{{ auth()->user()->name }}" disabled>
+                                    id="name" value="{{ auth()->user()->name }}">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Waktu') }}</label>
@@ -338,17 +338,16 @@
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Lokasi') }}</label>
                                 <input type="text" class="form-control" placeholder="Jl. Garuda" name="location"
-                                    value="123" id="location">
+                                    value="{{ auth()->user()->alamat }}" id="location">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('No. HP') }}</label>
                                 <input type="text" class="form-control" placeholder="0812345678" name="no_hp"
-                                    value="123" id="no_hp">
+                                    value="{{ auth()->user()->no_hp }}" id="no_hp">
                             </div>
                             <div class="mb-2">
-                                <label class="form-label">{{ __('No. HP') }}</label>
-                                <input type="text" class="form-control" placeholder="0812345678" name="date"
-                                    value="123" id="date">
+                                <label class="form-label">{{ __('Available Photograper : ') }}
+                                    {{ $available }}</label>
                             </div>
                         </div>
                         <div class="col-md-4">

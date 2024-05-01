@@ -17,6 +17,8 @@
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Name') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Email') }}</th>
+                <th class="d-none d-lg-table-cell">{{ __('No HP') }}</th>
+                <th class="d-none d-lg-table-cell">{{ __('Alamat') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Role') }}</th>
                 <th>{{ __('More') }}</th>
             </tr>
@@ -27,6 +29,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $user->name ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">{{ $user->email ?? '-' }}</td>
+                    <td class="d-none d-lg-table-cell">{{ $user->no_hp ?? '-' }}</td>
+                    <td class="d-none d-lg-table-cell">{{ $user->alamat ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">{{ $user->role ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
@@ -44,6 +48,8 @@
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Name') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Email') }}</th>
+                <th class="d-none d-lg-table-cell">{{ __('No HP') }}</th>
+                <th class="d-none d-lg-table-cell">{{ __('Alamat') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Role') }}</th>
                 <th>{{ __('More') }}</th>
             </tr>

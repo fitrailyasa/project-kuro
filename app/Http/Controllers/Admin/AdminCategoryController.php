@@ -11,7 +11,7 @@ class AdminCategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->reverse();
         return view('admin.category.index', compact('categories'));
     }
 

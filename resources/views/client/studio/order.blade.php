@@ -10,7 +10,10 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
+                    <form action="{{ route('studio.checkout') }}" method="POST" class="row">
+                        @csrf
+                        <h3 class="text-center mb-3">{{ $package->name }}</h3>
+                        <input type="hidden" name="package_id" id="package_id" value="{{ $package->id }}">
                         <div class="col-md-4">
                             <div class="card-header text-center mb-2">
                                 <div class="fw-bold">{{ __('Tentukan Tanggal') }}</div>
@@ -323,53 +326,58 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-2">
-                                <label class="form-label">{{ __('Package') }}</label>
-                                <input type="text" class="form-control" placeholder="package_id" name="package_id"
-                                    id="package_id">
-                            </div>
-                            <div class="mb-2">
                                 <label class="form-label">{{ __('Nama') }}</label>
                                 <input type="text" class="form-control" placeholder="name" name="name"
-                                    id="name" value="">
+                                    id="name" value="{{ auth()->user()->name }}">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">{{ __('Waktu') }}</label>
+                                <input type="text" class="form-control" placeholder="12.00" name="time"
+                                    value="123" id="time">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Lokasi') }}</label>
-                                <input type="text" class="form-control" placeholder="location" name="location"
-                                    id="location">
+                                <input type="text" class="form-control" placeholder="Jl. Garuda" name="location"
+                                    value="{{ auth()->user()->alamat }}" id="location">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('No. HP') }}</label>
-                                <input type="text" class="form-control" placeholder="no_hp" name="no_hp"
-                                    id="no_hp">
+                                <input type="text" class="form-control" placeholder="0812345678" name="no_hp"
+                                    value="{{ auth()->user()->no_hp }}" id="no_hp">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">{{ __('Available Photograper : ') }}
+                                    {{ $available }}</label>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
                                 <input type="text" class="form-control" placeholder="10000" name="price_1"
-                                    id="price_1">
+                                    value="123" id="price_1">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Lokasi') }}</label>
                                 <input type="text" class="form-control" placeholder="10000" name="price_2"
-                                    id="price_2">
+                                    value="123" id="price_2">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Durasi') }}</label>
                                 <input type="text" class="form-control" placeholder="10000" name="price_3"
-                                    id="price_3">
+                                    value="123" id="price_3">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">{{ __('Foto Edit') }}</label>
                                 <input type="text" class="form-control" placeholder="10000" name="price_4"
-                                    id="price_4">
+                                    value="123" id="price_4">
                             </div>
                             <div class="mb-2">
                                 <input type="checkbox" name="price_5" id="price_5" value="550000">
                                 <label class="form-label">{{ __('Video Cinematic') }}</label>
                             </div>
                         </div>
-                    </div>
+                        <button class="btn btn-dark" type="submit">Checkout</button>
+                    </form>
                 </div>
             </div>
         </div>

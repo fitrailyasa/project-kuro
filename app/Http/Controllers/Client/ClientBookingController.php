@@ -11,7 +11,7 @@ class ClientBookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::all()->reverse();
         return view('client.booking.index', compact('bookings'));
     }
 

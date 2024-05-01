@@ -13,7 +13,7 @@ class AdminPackagePController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $packages = Package::where('type', 'P')->latest('id')->get();
+        $packages = Package::where('type', 'P')->reverse()->get();
         return view('admin.package_p.index', compact('packages', 'categories'));
     }
 

@@ -14,7 +14,7 @@ class AdminBookingPController extends Controller
     public function index()
     {
         $packages = Package::all();
-        $bookings = Booking::where('type', 'P')->latest('id')->get();
+        $bookings = Booking::where('type', 'P')->reverse()->get();
         return view('admin.booking_p.index', compact('bookings', 'packages'));
     }
 

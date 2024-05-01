@@ -8,7 +8,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.booking_s.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.inventory.store') }}" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="modal-header">
@@ -19,7 +19,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
@@ -29,13 +29,18 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Images') }}</label>
-                            <input id="image-input" accept="image/*" type="file"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img">
-                            @error('img')
+                            <label class="form-label">{{ __('Category') }}</label>
+                            <select class="form-select @error('category_id') is-invalid @enderror" name="category_id"
+                                id="category_id" required>
+                                <option selected disabled>{{ __('Select Category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -52,8 +57,15 @@
                     </div>
                     <div class="col-md-12 text-center">
                         <div class="mb-3">
+                            <label class="form-label">{{ __('Images') }}</label>
+                            <input id="image-input" accept="image/*" type="file"
+                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
+                                id="img">
                             <img class="img-fluid py-3" id="image-preview" width="200px"
                                 src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
+                            @error('img')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>

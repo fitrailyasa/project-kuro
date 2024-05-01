@@ -39,6 +39,16 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="mb-2">
+                            <label class="form-label">{{ __('Alamat') }}</label>
+                            <input type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                placeholder="alamat" name="alamat" id="alamat" required>
+                            @error('alamat')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">

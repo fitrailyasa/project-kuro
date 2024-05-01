@@ -5,26 +5,67 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Category;
+use App\Models\Booking;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ClientStudioController extends Controller
 {
     public function index()
     {
-        $studios = Package::where('type', 'S')->paginate(10);
-        return view('client.studio.index', compact('studios'));
+        $packages = Package::where('type', 'S')->paginate(10);
+        return view('client.studio.index', compact('packages'));
     }
 
     public function show(string $id)
     {
-        $studio = Package::where('type', 'S')->findOrFail($id);
-        return view('client.studio.show', compact('studio'));
+        $package = Package::where('type', 'S')->findOrFail($id);
+        return view('client.studio.show', compact('package'));
     }
 
     public function order(string $id)
     {
-        $studio = Package::where('type', 'S')->findOrFail($id);
-        return view('client.studio.order', compact('studio'));
+        $available = 10;
+        $package = Package::where('type', 'S')->findOrFail($id);
+        return view('client.studio.order', compact('package', 'available'));
+    }
+
+    public function checkout(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'package_id' => 'required',
+            'no_hp' => 'required',
+            'location' => 'required',
+            // 'date' => 'required',
+            // 'time' => 'required',
+        ]);
+
+        $booking = Booking::create([
+            'id' => Str::uuid(),
+            'name' => $request->name,
+            'package_id' => $request->package_id,
+            'no_hp' => $request->no_hp,
+            'location' => $request->location,
+            // 'date' => $request->date,
+            // 'time' => $request->time,
+            'type' => 'P',
+            'status' => 'Menunggu Konfirmasi',
+            'price_1' => $request->price_1,
+            'price_2' => $request->price_2,
+            'price_3' => $request->price_3,
+            'price_4' => $request->price_4,
+            'price_5' => $request->price_5,
+        ]);
+
+        $total = $request->price_1 + $request->price_2 + $request->price_3 + $request->price_4 + $request->price_5;
+
+        $booking->total = $total;
+        $booking->save();
+
+        // dd($booking);
+
+        return redirect()->route('booking')->with('alert', 'Berhasil Order!');
     }
     
 }
