@@ -13,7 +13,7 @@ class AdminPackageSController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $packages = Package::where('type', 'S')->reverse()->get();
+        $packages = Package::where('type', 'S')->get();
         return view('admin.package_s.index', compact('packages', 'categories'));
     }
 

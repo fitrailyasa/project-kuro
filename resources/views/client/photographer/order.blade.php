@@ -2,7 +2,7 @@
 
 @section('title', 'Detail Booking')
 
-@section('textBooking', 'bg-dark rounded')
+@section('textPhotographer', 'bg-dark rounded')
 
 @section('content')
 
