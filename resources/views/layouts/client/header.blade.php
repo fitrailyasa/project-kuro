@@ -1,8 +1,8 @@
-<header class="header px-3 bg-dark text-white mb-3 fixed-top">
+<header class="header px-3 my-3 fixed-top">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
             <div class="d-flex align-items-center justify-content-center">
-                <img class="img-fluid bg-white rounded-circle p-1" width="60" src="{{ asset('assets/img/logo.png') }}"
+                <img class="img-fluid border rounded-circle p-1" width="60" src="{{ asset('assets/img/logo.png') }}"
                     alt="Logo">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mx-3 justify-content-center mb-md-0">
                     <li><a href="{{ route('beranda') }}"
@@ -27,7 +27,8 @@
                                 value="">
                             <button class="btn w-25 btn-outline-light b" type="submit">Cari</button>
                         </div> --}}
-                        <a href="{{ route('login') }}" class="btn tombol ms-3"><i class="fas fa-sign-in-alt"></i>
+                        <a href="{{ route('login') }}" class="btn aktif text-white btn-outline-light ms-3"><i
+                                class="fas fa-sign-in-alt"></i>
                             Login</a>
                     </div>
                 </form>

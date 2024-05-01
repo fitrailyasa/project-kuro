@@ -110,5 +110,5 @@
     </div>
 
     @section('menuBooking_s', 'menu-open')
-    @section('activeBooking_s', 'active')
+    @section('activeBooking_s', 'aktif')
 </x-admin-layout>

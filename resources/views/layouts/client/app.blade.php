@@ -63,15 +63,19 @@
     <meta name="msapplication-square310x310logo" content="{{ asset('assets/favicon/mstile-310x310.png') }}" />
 
     <style>
-        .header,
-        /* .content, */
-        .modal-body,
-        .img-gallery,
-        /* .aktif, */
-        .footer {
+        /* .header, */
+        /* .modal-body, */
+        /* .img-gallery, */
+        /* .footer, */
+        .aktif {
             color: white;
-            background-color: #00000075;
-            background-image: linear-gradient(225deg, #1c1c1c 0%, rgb(53, 53, 53)0%, #1c1c1c 100%) !important;
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+        }
+
+        .content {
+            background-color: #FFFFFF;
+            /* background-image: linear-gradient(160deg, #ffffff 0%, #80D0C7 100%); */
         }
 
         .kartu {
@@ -84,15 +88,16 @@
             width: 400px;
         }
 
-        /* .header {
+        .header {
             color: white;
             background-color: rgba(189, 189, 189, 0.5);
         }
 
         .footer {
             color: white;
-            background-color: rgba(189, 189, 189, 0.5);
-        } */
+            background-color: #0093E9;
+            background-image: linear-gradient(160deg, #0093E9 0%, rgb(24, 87, 168) 100%);
+        }
 
         .tombol {
             color: white;

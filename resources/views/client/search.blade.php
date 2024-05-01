@@ -2,10 +2,10 @@
 
 @section('title', 'Hasil Pencarian')
 
-@section('textHome', 'bg-dark rounded')
+@section('textHome', 'aktif rounded')
 
 @section('content')
-    <div class="container text-center my-5 py-5">
+    <div class="container text-center my-5 pt-5 pb-3">
         @include('client.buttonSearch')
         <h4 class="text-dark font-weight-bold p-3 mx-3 text-white">Hasil Pencarian</h4>
         <div class="text-center d-flex flex-wrap justify-content-center border-bottom">

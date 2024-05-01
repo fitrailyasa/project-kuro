@@ -93,5 +93,5 @@
     </table>
 
     @section('menuPackage_p', 'menu-open')
-    @section('activePackage_p', 'active')
+    @section('activePackage_p', 'aktif')
 </x-admin-table>

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-6 col-sm-10 col-12 mx-auto my-5 p-5">
-        <div class="card bg-dark mt-5 py-5">
+        <div class="card footer mt-5 py-5">
             <h3 class="text-center text-white font-weight-bold">MASUK</h3>
             <div class="d-flex justify-content-center align-items-center mt-3">
                 <form action="{{ route('login') }}" method="POST" class="">
@@ -19,7 +19,7 @@
                     @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                    <button type="submit" class="btn btn-block btn-outline-light mt-3">Masuk</button>
+                    <button type="submit" class="btn btn-block aktif mt-3">Masuk</button>
                 </form>
             </div>
         </div>

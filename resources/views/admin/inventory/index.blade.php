@@ -95,5 +95,5 @@
         </tfoot>
     </table>
 
-    @section('activeinventory', 'active')
+    @section('activeinventory', 'aktif')
 </x-admin-table>

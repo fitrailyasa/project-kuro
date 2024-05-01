@@ -56,5 +56,5 @@
         </tfoot>
     </table>
 
-    @section('activeUser', 'active')
+    @section('activeUser', 'aktif')
 </x-admin-table>

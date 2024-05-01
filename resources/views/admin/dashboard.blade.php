@@ -41,8 +41,7 @@
 
                     <p>{{ __('Inventaris') }}</p>
                 </div>
-                <a href="#" class="small-box-footer">Kelola Data <i
-                        class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">Kelola Data <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -116,5 +115,5 @@
         <!-- ./col -->
     </div>
 
-    @section('activeDashboard', 'active')
+    @section('activeDashboard', 'aktif')
 </x-admin-layout>

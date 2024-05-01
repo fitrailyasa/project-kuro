@@ -24,15 +24,16 @@
 <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
 
 <style>
-    /* .main-header,
+    .main-header,
     .main-sidebar {
-        background-color: rgb(66, 0, 0);
         color: white;
+        background-color: #0093E9;
+        background-image: linear-gradient(160deg, #0093E9 0%, rgb(24, 87, 168) 100%);
     }
 
     .aktif {
-        background-color: rgb(187, 20, 20);
-    } */
+        background-color: rgb(222, 199, 0);
+    }
 </style>
 
 <!--Favicon-->
