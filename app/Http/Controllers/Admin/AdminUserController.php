@@ -15,6 +15,10 @@ class AdminUserController extends Controller
             [
                 'id' => 'admin',
                 'name' => 'Admin',
+            ],
+            [
+                'id' => 'user',
+                'name' => 'User',
             ]
         ];
         $users = User::all();
@@ -44,7 +48,7 @@ class AdminUserController extends Controller
                 'role.required' => 'Roles harus diisi!'
             ]
         );
-        
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,

@@ -6,15 +6,15 @@
     </x-slot>
 
     <!-- Button Form Create -->
-    <x-slot name="formCreate">
+    {{-- <x-slot name="formCreate">
         @include('admin.package_s.create')
-    </x-slot>
+    </x-slot> --}}
 
     <!-- Table -->
     <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>{{ __('No') }}</th>
+                {{-- <th>{{ __('No') }}</th> --}}
                 <th>{{ __('Category') }}</th>
                 <th>{{ __('Name') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Desc') }}</th>
@@ -25,14 +25,13 @@
         <tbody>
             @foreach ($packages as $package)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    {{-- <td>{{ $loop->iteration }}</td> --}}
                     <td>{{ $package->Category->name ?? '-' }}</td>
                     <td>{{ $package->name ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">{{ $package->desc ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">
                         @if ($package->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $package->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $package->name }}" width="100">
                         @else
                             <a href="#" data-toggle="modal" data-target="#myModal{{ $package->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $package->img) }}"
@@ -74,7 +73,7 @@
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
                             @include('admin.package_s.edit')
-                            @include('admin.package_s.delete')
+                            {{-- @include('admin.package_s.delete') --}}
                         @endif
                     </td>
                 </tr>
@@ -82,7 +81,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th>{{ __('No') }}</th>
+                {{-- <th>{{ __('No') }}</th> --}}
                 <th>{{ __('Category') }}</th>
                 <th>{{ __('Name') }}</th>
                 <th class="d-none d-lg-table-cell">{{ __('Desc') }}</th>

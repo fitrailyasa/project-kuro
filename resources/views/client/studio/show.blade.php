@@ -14,7 +14,8 @@
                         <a href="{{ route('studio') }}"><i class="fa fa-arrow-left text-dark"></i></a>
                     </div>
                     <div class="col-md-6 rounded text-center">
-                        <img src="{{ asset('assets/img/' . $package->img) }}" alt="">
+                        <img class="img img-fluid" width="500" src="{{ asset('assets/img/' . $package->img) }}"
+                            alt="">
                     </div>
                     <div class="col-md-5 text-justify p-3">
                         <h2>{{ $package->name }}</h2>

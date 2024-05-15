@@ -1,3 +1,8 @@
+<?php
+use App\Models\Package;
+$package = Package::where('type', 'S')->first();
+?>
+
 <header class="header px-3 my-3 fixed-top">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
@@ -8,7 +13,7 @@
                     <li><a href="{{ route('beranda') }}"
                             class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textHome')">{{ __('Home') }}</a>
                     </li>
-                    <li><a href="{{ route('studio') }}"
+                    <li><a href="{{ route('studio.show', $package->id) }}"
                             class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textStudio')">{{ __('Studio') }}</a>
                     </li>
                     <li><a href="{{ route('photographer') }}"

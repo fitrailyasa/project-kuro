@@ -83,30 +83,66 @@
                 </div>
             </div>
         </div>
-        <div class="card col-md-3">
-            @if (auth()->user()->role == 'admin')
-                <form class="bg-dark p-2" method="POST"
-                    action="{{ route('admin.booking_s.update', $booking->id) }}" enctype="multipart/form-data">
-            @endif
-            @csrf
-            @method('PUT')
-            <div class="card-header">
-                <input type="hidden" name="status" id="status" value="Selesai">
-                <h4 class="text-center">Total : Rp.{{ $booking->total }}</h4>
+        @if ($booking->status == 'Menunggu Konfirmasi')
+            <div class="card col-md-3">
+                @if (auth()->user()->role == 'admin')
+                    <form class=" p-2" method="POST" action="{{ route('admin.booking_s.update', $booking->id) }}"
+                        enctype="multipart/form-data">
+                @endif
+                @csrf
+                @method('PUT')
+                <div class="card-header">
+                    <input type="hidden" name="status" id="status" value="Diproses">
+                    <h4 class="text-center">Total : Rp.{{ $booking->total }}</h4>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">Konfirmasi Pesanan</button>
+                <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success"><i
+                        class="fa fa-whatsapp"></i> Chat Penyewa</a>
+                </form>
+                @if (auth()->user()->role == 'admin')
+                    <form class=" px-2 pb-3" method="POST"
+                        action="{{ route('admin.booking_s.update', $booking->id) }}" enctype="multipart/form-data">
+                @endif
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="status" id="status" value="Dibatalkan">
+                <button type="submit" class="btn btn-block btn-danger">Batalkan Pesanan</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-block btn-primary">Konfirmasi Pesanan</button>
-            <a href="#" class="btn btn-block btn-success"><i class="fa fa-whatsapp"></i> Chat Penyewa</a>
-            </form>
-            @if (auth()->user()->role == 'admin')
-                <form class="bg-dark px-2 pb-3" method="POST"
-                    action="{{ route('admin.booking_s.update', $booking->id) }}" enctype="multipart/form-data">
-            @endif
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="status" id="status" value="Dibatalkan">
-            <button type="submit" class="btn btn-block btn-danger">Batalkan Pesanan</button>
-            </form>
-        </div>
+        @elseif ($booking->status == 'Diproses')
+            <div class="card col-md-3">
+                @if (auth()->user()->role == 'admin')
+                    <form class=" p-2" method="POST" action="{{ route('admin.booking_s.update', $booking->id) }}"
+                        enctype="multipart/form-data">
+                @endif
+                @csrf
+                @method('PUT')
+                <div class="card-header">
+                    <input type="hidden" name="status" id="status" value="Selesai">
+                    <h4 class="text-center">Total : Rp.{{ $booking->total }}</h4>
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">Pesanan Selesai</button>
+                <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success"><i
+                        class="fa fa-whatsapp"></i> Chat
+                    Penyewa</a>
+                </form>
+                @if (auth()->user()->role == 'admin')
+                    <form class=" px-2 pb-3" method="POST"
+                        action="{{ route('admin.booking_s.update', $booking->id) }}" enctype="multipart/form-data">
+                @endif
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="status" id="status" value="Dibatalkan">
+                <button type="submit" class="btn btn-block btn-danger">Batalkan Pesanan</button>
+                </form>
+            </div>
+        @elseif ($booking->status == 'Selesai')
+            <div class="card col-md-3">
+                <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success mt-3"><i
+                        class="fa fa-whatsapp"></i> Chat
+                    Penyewa</a>
+            </div>
+        @endif
     </div>
 
     @section('menuBooking_s', 'menu-open')
