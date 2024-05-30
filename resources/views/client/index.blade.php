@@ -48,11 +48,11 @@
                     @if ($package->Category->name == 'Graduation Personal')
                         <div class="col-sm-4 col-md-4 p-3">
                             <div class="card border rounded p-3">
-                                <img class="img img-fluid col-12" src="{{ asset('assets/img/' . $package->img) }}"
-                                    alt="">
+                                <img class="img img-fluid col-12" loading="fuzy"
+                                    src="{{ asset('assets/img/' . $package->img) }}" alt="">
                                 <h4>{{ $package->name }}</h4>
                                 <p class="text-justify">{{ $package->list }}</p>
-                                <h3><b>Rp. {{ $package->price }}</b></h3>
+                                <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
                                 <a href="{{ route('photographer.show', $package->id) }}"
                                     class="btn text-white aktif border col-12">Booking Now
                                 </a>
@@ -75,11 +75,11 @@
                     @if ($package->Category->name == 'Graduation Group')
                         <div class="col-sm-4 col-md-4 p-3">
                             <div class="card border rounded p-3">
-                                <img class="img img-fluid col-12" src="{{ asset('assets/img/' . $package->img) }}"
-                                    alt="">
+                                <img class="img img-fluid col-12" loading="fuzy"
+                                    src="{{ asset('assets/img/' . $package->img) }}" alt="">
                                 <h4>{{ $package->name }}</h4>
                                 <p class="text-justify">{{ $package->list }}</p>
-                                <h3><b>Rp. {{ $package->price }}</b></h3>
+                                <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
                                 <a href="{{ route('photographer.show', $package->id) }}"
                                     class="btn text-white aktif border col-12">Booking Now
                                 </a>
@@ -102,11 +102,11 @@
                     @if ($package->Category->name == 'Other Events')
                         <div class="col-sm-4 col-md-4 p-3">
                             <div class="card border rounded p-3">
-                                <img class="img img-fluid col-12" src="{{ asset('assets/img/' . $package->img) }}"
-                                    alt="">
+                                <img class="img img-fluid col-12" loading="fuzy"
+                                    src="{{ asset('assets/img/' . $package->img) }}" alt="">
                                 <h4>{{ $package->name }}</h4>
                                 <p class="text-justify">{{ $package->list }}</p>
-                                <h3><b>Rp. {{ $package->price }}</b></h3>
+                                <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
                                 <a href="{{ route('photographer.show', $package->id) }}"
                                     class="btn text-white aktif border col-12">Booking Now
                                 </a>
