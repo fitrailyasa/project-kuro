@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Package;
-use App\Models\Category;
 use App\Models\Booking;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;

@@ -19,7 +19,23 @@ class CategorySeeder extends Seeder
         $categories = [
             [
                 'id' => Str::uuid(),
-                'name' => 'Photographer',
+                'name' => 'Graduation Personal',
+                'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit doloremque eaque incidunt. Maxime adipisci laudantium architecto odio dicta perferendis ipsum dolores suscipit animi natus, amet quas fugit officiis aut earum quo, sit labore nam. Quo nisi sequi placeat aspernatur, voluptatibus labore facere atque quis ea hic, delectus magni necessitatibus ipsa maiores vel? Repudiandae nulla est dolor praesentium aliquam magni.',
+                'img' => "logo.png",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => Str::uuid(),
+                'name' => 'Graduation Group',
+                'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit doloremque eaque incidunt. Maxime adipisci laudantium architecto odio dicta perferendis ipsum dolores suscipit animi natus, amet quas fugit officiis aut earum quo, sit labore nam. Quo nisi sequi placeat aspernatur, voluptatibus labore facere atque quis ea hic, delectus magni necessitatibus ipsa maiores vel? Repudiandae nulla est dolor praesentium aliquam magni.',
+                'img' => "logo.png",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => Str::uuid(),
+                'name' => 'Other Events',
                 'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit doloremque eaque incidunt. Maxime adipisci laudantium architecto odio dicta perferendis ipsum dolores suscipit animi natus, amet quas fugit officiis aut earum quo, sit labore nam. Quo nisi sequi placeat aspernatur, voluptatibus labore facere atque quis ea hic, delectus magni necessitatibus ipsa maiores vel? Repudiandae nulla est dolor praesentium aliquam magni.',
                 'img' => "logo.png",
                 'created_at' => Carbon::now(),
@@ -37,5 +53,4 @@ class CategorySeeder extends Seeder
         ];
         Category::query()->insert($categories);
     }
-
 }

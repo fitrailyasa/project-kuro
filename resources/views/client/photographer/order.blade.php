@@ -6,8 +6,7 @@
 
 @section('content')
 
-    <div class="py-5"
-        style="background-image: url('{{ asset('assets/img/pk (16).jpg') }}'); background-size: cover;">
+    <div class="py-5">
         <div class="container pt-5 pb-3">
             <div class="row">
                 <div class="card">
@@ -224,7 +223,8 @@
                                                                         <tr>
                                                                             <th class="prev" data-action="previous">
                                                                                 <span class="fa fa-chevron-left"
-                                                                                    title="Previous Year"></span></th>
+                                                                                    title="Previous Year"></span>
+                                                                            </th>
                                                                             <th class="picker-switch"
                                                                                 data-action="pickerSwitch" colspan="5"
                                                                                 title="Select Year">2024</th>
@@ -270,7 +270,8 @@
                                                                         <tr>
                                                                             <th class="prev" data-action="previous">
                                                                                 <span class="fa fa-chevron-left"
-                                                                                    title="Previous Decade"></span></th>
+                                                                                    title="Previous Decade"></span>
+                                                                            </th>
                                                                             <th class="picker-switch"
                                                                                 data-action="pickerSwitch" colspan="5"
                                                                                 title="Select Decade">2020-2029</th>
@@ -316,7 +317,8 @@
                                                                         <tr>
                                                                             <th class="prev" data-action="previous">
                                                                                 <span class="fa fa-chevron-left"
-                                                                                    title="Previous Century"></span></th>
+                                                                                    title="Previous Century"></span>
+                                                                            </th>
                                                                             <th class="picker-switch"
                                                                                 data-action="pickerSwitch" colspan="5">
                                                                                 2000-2090</th>

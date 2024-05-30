@@ -3,10 +3,10 @@
 @section('title', 'Login')
 
 @section('content')
-    <div class="col-md-6 col-sm-10 col-12 mx-auto my-5 p-5">
-        <div class="card footer mt-5 py-5">
-            <h3 class="text-center text-white font-weight-bold">MASUK</h3>
-            <div class="d-flex justify-content-center align-items-center mt-3">
+    <div class="d-flex justify-content-center align-items-center pt-5 pb-3">
+        <div class="card mt-5 py-5">
+            <h3 class="text-center font-weight-bold" style="color: #0093E9;">MASUK</h3>
+            <div class="d-flex justify-content-center align-items-center mt-3 mx-3">
                 <form action="{{ route('login') }}" method="POST" class="">
                     @csrf
                     <input class="form-control @error('email') is-invalid @enderror" name="email" required autofocus

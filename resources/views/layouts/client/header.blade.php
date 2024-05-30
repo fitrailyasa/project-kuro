@@ -3,7 +3,7 @@ use App\Models\Package;
 $package = Package::where('type', 'S')->first();
 ?>
 
-<header class="header px-3 my-3 fixed-top">
+<header class="header px-3 mb-3 fixed-top border-bottom">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-between">
             <div class="d-flex align-items-center justify-content-center">
@@ -11,16 +11,16 @@ $package = Package::where('type', 'S')->first();
                     alt="Logo">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mx-3 justify-content-center mb-md-0">
                     <li><a href="{{ route('beranda') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textHome')">{{ __('Home') }}</a>
+                            class="nav-link py-3 px-3 fw-bold fs-5 @yield('textHome')">{{ __('Home') }}</a>
                     </li>
                     <li><a href="{{ route('studio.show', $package->id) }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textStudio')">{{ __('Studio') }}</a>
+                            class="nav-link py-3 px-3 fw-bold fs-5 @yield('textStudio')">{{ __('Studio') }}</a>
                     </li>
                     <li><a href="{{ route('photographer') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textPhotographer')">{{ __('Photographer') }}</a>
+                            class="nav-link py-3 px-3 fw-bold fs-5 @yield('textPhotographer')">{{ __('Photographer') }}</a>
                     </li>
                     <li><a href="{{ route('booking') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textBooking')">{{ __('My Booking') }}</a>
+                            class="nav-link py-3 px-3 fw-bold fs-5 @yield('textBooking')">{{ __('My Booking') }}</a>
                     </li>
                 </ul>
             </div>
@@ -32,7 +32,7 @@ $package = Package::where('type', 'S')->first();
                                 value="">
                             <button class="btn w-25 btn-outline-light b" type="submit">Cari</button>
                         </div> --}}
-                        <a href="{{ route('login') }}" class="btn aktif text-white btn-outline-light ms-3"><i
+                        <a href="{{ route('login') }}" class="btn aktif btn-outline-light ms-3"><i
                                 class="fas fa-sign-in-alt"></i>
                             Login</a>
                     </div>

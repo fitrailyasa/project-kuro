@@ -20,7 +20,7 @@ class BookingSeeder extends Seeder
         $bookings = [
             [
                 'id' => Str::uuid(),
-                'package_id' => $this->Package('Personal Silver (Photographer)'),
+                'package_id' => $this->Package('Platinum Package'),
                 'name' => 'John Doe',
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),
@@ -39,7 +39,7 @@ class BookingSeeder extends Seeder
             ],
             [
                 'id' => Str::uuid(),
-                'package_id' => $this->Package('Personal Gold (Photographer)'),
+                'package_id' => $this->Package('Diamond Package'),
                 'name' => 'John Doe 2',
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),
@@ -77,7 +77,7 @@ class BookingSeeder extends Seeder
             ],
             [
                 'id' => Str::uuid(),
-                'package_id' => $this->Package('Personal Gold (Studio)'),
+                'package_id' => $this->Package('Duo Package'),
                 'name' => 'John Doe 2',
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),

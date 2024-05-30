@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Package;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $categories = Category::all()->reverse();
-        return view('client.index', compact('categories'));
+        $packages = Package::where('type', 'P')->paginate(10);
+
+        return view('client.index', compact('categories', 'packages'));
     }
 
     public function show(string $id)

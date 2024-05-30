@@ -6,12 +6,12 @@
 
 @section('content')
 
-    <div class="py-5" style="background-image: url('{{ asset('assets/img/pk (16).jpg') }}'); background-size: cover;">
+    <div class="py-5">
         <div class="container pt-5 pb-3">
             <div class="card card-primary card-outline">
                 <div class="row p-3">
                     <div class="col-md-1">
-                        <a href="{{ route('studio') }}"><i class="fa fa-arrow-left text-dark"></i></a>
+                        {{-- <a href="{{ route('studio') }}"><i class="fa fa-arrow-left text-dark"></i></a> --}}
                     </div>
                     <div class="col-md-6 rounded text-center">
                         <img class="img img-fluid" width="500" src="{{ asset('assets/img/' . $package->img) }}"

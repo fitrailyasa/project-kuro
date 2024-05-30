@@ -75,6 +75,16 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('List') }}</label>
+                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list" id="list"
+                                rows="4">{{ $package->list }}</textarea>
+                            @error('list')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

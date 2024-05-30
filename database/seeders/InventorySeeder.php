@@ -20,8 +20,8 @@ class InventorySeeder extends Seeder
         $inventories = [
             [
                 'id' => Str::uuid(),
-                'name' => 'Photographer',
-                'category_id' => $this->category('Photographer'),
+                'name' => 'Studio',
+                'category_id' => $this->category('Studio'),
                 'desc' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit doloremque eaque incidunt. Maxime adipisci laudantium architecto odio dicta perferendis ipsum dolores suscipit animi natus, amet quas fugit officiis aut earum quo, sit labore nam. Quo nisi sequi placeat aspernatur, voluptatibus labore facere atque quis ea hic, delectus magni necessitatibus ipsa maiores vel? Repudiandae nulla est dolor praesentium aliquam magni.',
                 'img' => "logo.png",
                 'created_at' => Carbon::now(),
@@ -52,5 +52,4 @@ class InventorySeeder extends Seeder
         }
         return $category->id;
     }
-
 }

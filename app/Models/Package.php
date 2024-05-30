@@ -13,7 +13,7 @@ class Package extends Model
     protected $table = 'package';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'category_id', 'desc', 'img', 'price', 'type'];
+    protected $fillable = ['id', 'name', 'category_id', 'desc', 'list', 'img', 'price', 'type'];
 
     public function Category()
     {

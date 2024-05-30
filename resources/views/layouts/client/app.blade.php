@@ -63,14 +63,11 @@
     <meta name="msapplication-square310x310logo" content="{{ asset('assets/favicon/mstile-310x310.png') }}" />
 
     <style>
-        /* .header, */
-        /* .modal-body, */
-        /* .img-gallery, */
-        /* .footer, */
         .aktif {
+            margin: 3px;
             color: white;
             background-color: #0093E9;
-            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+            background-image: linear-gradient(160deg, #0074b7 0%, #80D0C7 100%);
         }
 
         .content {
@@ -86,11 +83,20 @@
             margin: 40px 10px 10px 10px;
             padding: 10px;
             width: 400px;
+            backdrop-filter: blur(20px);
         }
 
         .header {
             color: white;
-            background-color: rgba(189, 189, 189, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .kartu-img {
+            color: white;
+            border: 1px solid rgba(15, 3, 83, 0.169);
+            padding: 2px;
+            margin: 0px;
+            backdrop-filter: blur(20px);
         }
 
         .footer {
@@ -160,6 +166,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed content">
+    {{-- style="background-image: url('assets/img/pk (16).jpg'); background-size: cover;"> --}}
 
     @include('layouts.client.header')
 

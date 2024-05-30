@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="py-5" style="background-image: url('{{ asset('assets/img/pk (16).jpg') }}'); background-size: cover;">
+    <div class="py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center d-flex flex-wrap justify-content-center">
                 @foreach ($packages as $package)
