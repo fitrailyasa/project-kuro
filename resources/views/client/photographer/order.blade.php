@@ -383,7 +383,8 @@
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Nama') }}</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
-                                        id="name" value="{{ auth()->user()->name }}">
+                                        id="name" value="{{ auth()->user()->name }}" disabled>
+                                    <input type="text" class="form-control" name="user_id" id="user_id" value="{{ auth()->user()->id }}" hidden>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Waktu') }}</label>
@@ -407,28 +408,67 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-2">
-                                    <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
-                                    <input type="text" class="form-control" placeholder="10000" name="price_1"
-                                        value="123" id="price_1">
+                                    <label class="form-label">{{ __('Tambah Wisudawan | Rp250.000/Wisudawan') }}</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="decrement('price_1')">-</button>
+                                        <input type="number" class="form-control" placeholder="Jumlah Wisudawan"
+                                            name="price_1" value="0" id="price_1" min="0"
+                                            onchange="calculateTotal()">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="increment('price_1')">+</button>
+                                    </div>
+                                    <input type="hidden" name="price_per_wisudawan" value="250000">
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">{{ __('Lokasi') }}</label>
-                                    <input type="text" class="form-control" placeholder="10000" name="price_2"
-                                        value="123" id="price_2">
+                                    <input type="checkbox" name="location_checkbox" id="location_checkbox"
+                                        onchange="toggleLocationInput()">
+                                    <label class="form-label">{{ __('Tambah Lokasi | Rp100.000') }}</label>
+                                    <input type="text" class="form-control" placeholder="Lokasi" name="price_2"
+                                        value="" id="price_2" disabled>
+                                    <input type="hidden" name="price_location" value="100000">
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">{{ __('Durasi') }}</label>
-                                    <input type="text" class="form-control" placeholder="10000" name="price_3"
-                                        value="123" id="price_3">
+                                    <label class="form-label">{{ __('Tambah Durasi | Rp150.000/Jam') }}</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="decrement('price_3')">-</button>
+                                        <input type="number" class="form-control" placeholder="Durasi (Jam)"
+                                            name="price_3" value="0" id="price_3" min="0"
+                                            onchange="calculateTotal()">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="increment('price_3')">+</button>
+                                    </div>
+                                    <input type="hidden" name="price_per_hour" value="150000">
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">{{ __('Foto Edit') }}</label>
-                                    <input type="text" class="form-control" placeholder="10000" name="price_4"
-                                        value="123" id="price_4">
+                                    <label class="form-label">{{ __('Tambah Foto | Rp50.000/10 Foto') }}</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="decrement('price_4')">-</button>
+                                        <input type="number" class="form-control" placeholder="Jumlah Tambahan Foto"
+                                            name="price_4" value="0" id="price_4" min="0"
+                                            onchange="calculateTotal()">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            onclick="increment('price_4')">+</button>
+                                    </div>
+                                    <input type="hidden" name="price_per_10_photos" value="5000">
                                 </div>
                                 <div class="mb-2">
-                                    <input type="checkbox" name="price_5" id="price_5" value="550000">
-                                    <label class="form-label">{{ __('Video Cinematic') }}</label>
+                                    <input type="checkbox" name="price_5" id="price_5" value="550000"
+                                        onchange="calculateTotal()">
+                                    <label class="form-label">{{ __('Video Cinematic Max 1 Minute | Rp500.000') }}</label>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">{{ __('Harga Package') }}</label>
+                                    <div id="price_package" class="form-control">Rp 0</div>
+                                    {{-- <label class="form-label">{{ __('Harga Tambahan') }}</label> --}}
+                                    <div id="total_cost" class="form-control">+Rp 0</div>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">{{ __('Total') }}</label>
+                                    <div id="total" class="form-control fw-bold">Rp
+                                        {{ number_format($package->price, 0, ',', '.') }}</div>
                                 </div>
                             </div>
                             <button class="btn aktif" type="submit">Checkout</button>
@@ -438,5 +478,55 @@
             </div>
         </div>
     </div>
+    <script>
+        function increment(id) {
+            let input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+            calculateTotal();
+        }
+
+        function decrement(id) {
+            let input = document.getElementById(id);
+            if (input.value > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
+            calculateTotal();
+        }
+
+        function toggleLocationInput() {
+            const locationInput = document.getElementById('price_2');
+            locationInput.disabled = !locationInput.disabled;
+            calculateTotal();
+        }
+
+        var packagePrice = <?php echo json_encode($package->price); ?>;
+
+        function calculateTotal() {
+            const quantityWisudawan = document.getElementById('price_1').value;
+            const pricePerWisudawan = document.querySelector('input[name="price_per_wisudawan"]').value;
+
+            const durationHours = document.getElementById('price_3').value;
+            const pricePerHour = document.querySelector('input[name="price_per_hour"]').value;
+
+            const additionalPhotos = document.getElementById('price_4').value;
+            const pricePer10Photos = document.querySelector('input[name="price_per_10_photos"]').value;
+
+            const isCinematicVideo = document.getElementById('price_5').checked;
+            const priceCinematicVideo = isCinematicVideo ? document.getElementById('price_5').value : 0;
+
+            const isLocationChecked = document.getElementById('location_checkbox').checked;
+            const priceLocation = isLocationChecked ? document.querySelector('input[name="price_location"]').value : 0;
+
+            let add = (quantityWisudawan * pricePerWisudawan) + (durationHours * pricePerHour) +
+                (additionalPhotos * pricePer10Photos) + parseInt(priceCinematicVideo) + parseInt(priceLocation);
+
+            document.getElementById('total_cost').textContent = '+Rp ' + add.toLocaleString();
+
+            let total = packagePrice + add;
+
+            document.getElementById('total').textContent = 'Rp ' + total.toLocaleString();
+        }
+        document.getElementById('price_package').textContent = 'Rp ' + packagePrice.toLocaleString();
+    </script>
 
 @endsection

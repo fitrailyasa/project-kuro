@@ -13,28 +13,26 @@
             </h3>
             <div class="row kartu-img pt-2">
                 <div class="col-md-4 col-4">
-                    <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (1).jpg') }}" alt="">
+                    <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (1).jpg') }}" alt="">
                 </div>
                 <div class="col-md-2 col-2">
-                    <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (15).jpg') }}" alt="">
-                    <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (16).jpg') }}" alt="">
+                    <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (15).jpg') }}" alt="">
+                    <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (16).jpg') }}" alt="">
                 </div>
                 <div class="col-md-4 col-4">
-                    <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (20).jpg') }}" alt="">
+                    <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (20).jpg') }}" alt="">
                     <div class="row">
                         <div class="col-md-6 col-6">
-                            <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (11).jpg') }}"
-                                alt="">
+                            <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (11).jpg') }}" alt="">
                         </div>
                         <div class="col-md-6 col-6">
-                            <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (12).jpg') }}"
-                                alt="">
+                            <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (12).jpg') }}" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2 col-2">
-                    <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (17).jpg') }}" alt="">
-                    <img class="img img-fluid pb-2 rounded" src="{{ asset('assets/img/pk (18).jpg') }}" alt="">
+                    <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (17).jpg') }}" alt="">
+                    <img class="img img-fluid pb-3" src="{{ asset('assets/img/pk (18).jpg') }}" alt="">
                 </div>
             </div>
         </div>

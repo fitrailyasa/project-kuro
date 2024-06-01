@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('booking', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('token')->nullable();
-            $table->string('name');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('package_id')->nullable();
             $table->text('location')->nullable();
             $table->string('date')->nullable();

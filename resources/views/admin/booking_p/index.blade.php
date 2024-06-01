@@ -35,7 +35,7 @@
                                 class="card card-warning card-outline py-3 px-4">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <p>{{ $booking->name }}</p>
+                                        <p>{{ $booking->User->name }}</p>
                                         <h3>{{ $booking->Package->name }}</h3>
                                         <div>No. Booking</div>
                                         <div>Waktu Booking</div>
@@ -59,7 +59,7 @@
                                 class="card card-primary card-outline py-3 px-4">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <p>{{ $booking->name }}</p>
+                                        <p>{{ $booking->User->name }}</p>
                                         <h3>{{ $booking->Package->name }}</h3>
                                         <div>No. Booking</div>
                                         <div>Waktu Booking</div>
@@ -83,7 +83,7 @@
                                 class="card card-success card-outline py-3 px-4">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <p>{{ $booking->name }}</p>
+                                        <p>{{ $booking->User->name }}</p>
                                         <h3>{{ $booking->Package->name }}</h3>
                                         <div>No. Booking</div>
                                         <div>Waktu Booking</div>
@@ -107,7 +107,7 @@
                                 class="card card-danger card-outline py-3 px-4">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <p>{{ $booking->name }}</p>
+                                        <p>{{ $booking->User->name }}</p>
                                         <h3>{{ $booking->Package->name }}</h3>
                                         <div>No. Booking</div>
                                         <div>Waktu Booking</div>

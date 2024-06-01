@@ -21,7 +21,7 @@ use App\Http\Controllers\Client\ClientBookingController;
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('/studio', [ClientStudioController::class, 'index'])->name('studio');
+// Route::get('/studio', [ClientStudioController::class, 'index'])->name('studio');
 Route::get('/studio/{id}', [ClientStudioController::class, 'show'])->name('studio.show');
 Route::get('/photographer', [ClientPhotographerController::class, 'index'])->name('photographer');
 Route::get('/photographer/{id}', [ClientPhotographerController::class, 'show'])->name('photographer.show');

@@ -26,7 +26,7 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control" placeholder="name" name="name" id="name"
-                                value="{{ $booking->name }}" disabled>
+                                value="{{ $booking->User->name }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Waktu') }}</label>

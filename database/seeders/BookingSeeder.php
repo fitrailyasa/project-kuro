@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Booking;
 use App\Models\Package;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -21,7 +22,7 @@ class BookingSeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'package_id' => $this->Package('Platinum Package'),
-                'name' => 'John Doe',
+                'user_id' => $this->User('Administrator'),
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),
                 'time' => Carbon::now()->format('H:i'),
@@ -40,7 +41,7 @@ class BookingSeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'package_id' => $this->Package('Diamond Package'),
-                'name' => 'John Doe 2',
+                'user_id' => $this->User('Administrator'),
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),
                 'time' => Carbon::now()->format('H:i'),
@@ -58,8 +59,8 @@ class BookingSeeder extends Seeder
             ],
             [
                 'id' => Str::uuid(),
-                'package_id' => $this->Package('Personal Silver (Studio)'),
-                'name' => 'John Doe',
+                'package_id' => $this->Package('Kids Photo'),
+                'user_id' => $this->User('Administrator'),
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),
                 'time' => Carbon::now()->format('H:i'),
@@ -78,7 +79,7 @@ class BookingSeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'package_id' => $this->Package('Duo Package'),
-                'name' => 'John Doe 2',
+                'user_id' => $this->User('Administrator'),
                 'location' => 'Jakarta',
                 'date' => Carbon::now()->format('Y-m-d'),
                 'time' => Carbon::now()->format('H:i'),
@@ -108,5 +109,17 @@ class BookingSeeder extends Seeder
             ]);
         }
         return $package->id;
+    }
+
+    private function User(string $name): string
+    {
+        $User = User::where('name', $name)->first();
+        if (!$User) {
+            $User = User::create([
+                'id' => Str::uuid(),
+                'name' => $name,
+            ]);
+        }
+        return $User->id;
     }
 }

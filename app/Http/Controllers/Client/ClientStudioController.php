@@ -33,7 +33,7 @@ class ClientStudioController extends Controller
     public function checkout(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
+            'user_id' => 'required|max:255',
             'package_id' => 'required',
             'no_hp' => 'required',
             'location' => 'required',
@@ -41,9 +41,33 @@ class ClientStudioController extends Controller
             // 'time' => 'required',
         ]);
 
+        $quantityWisudawan = (int) $request->input('price_1', 0);
+        $pricePerWisudawan = 250000;
+
+        $isLocationChecked = $request->has('price_2');
+        $priceLocation = $isLocationChecked ? 100000 : 0;
+
+        $durationHours = (int) $request->input('price_3', 0);
+        $pricePerHour = 150000;
+
+        $additionalPhotos = (int) $request->input('price_4', 0);
+        $pricePer10Photos = 5000;
+
+        $isCinematicVideo = $request->has('price_5');
+        $priceCinematicVideo = $isCinematicVideo ? 550000 : 0;
+
+        $total = Package::where('type', 'S')->findOrFail($request->package_id)->price;
+
+
+        $total += ($quantityWisudawan * $pricePerWisudawan) +
+            ($durationHours * $pricePerHour) +
+            ($additionalPhotos * $pricePer10Photos) +
+            $priceCinematicVideo +
+            $priceLocation;
+
         $booking = Booking::create([
             'id' => Str::uuid(),
-            'name' => $request->name,
+            'user_id' => $request->user_id,
             'package_id' => $request->package_id,
             'no_hp' => $request->no_hp,
             'location' => $request->location,
@@ -56,16 +80,13 @@ class ClientStudioController extends Controller
             'price_3' => $request->price_3,
             'price_4' => $request->price_4,
             'price_5' => $request->price_5,
+            'total' => $total
         ]);
-
-        $total = $request->price_1 + $request->price_2 + $request->price_3 + $request->price_4 + $request->price_5;
-
-        $booking->total = $total;
-        $booking->save();
 
         // dd($booking);
 
+        $booking->save();
+
         return redirect()->route('booking')->with('alert', 'Berhasil Order!');
     }
-    
 }
