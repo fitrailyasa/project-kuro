@@ -39,8 +39,6 @@ class ClientPhotographerController extends Controller
             'datetime' => 'required',
         ]);
 
-        // dd($request->all());
-
         $quantityWisudawan = (int) $request->input('price_1', 0);
         $pricePerWisudawan = 250000;
 
@@ -67,6 +65,7 @@ class ClientPhotographerController extends Controller
 
         $booking = Booking::create([
             'id' => Str::uuid(),
+            'token' => Str::random(3) . '-' . $request->user_id . '-' . Str::random(3),
             'user_id' => $request->user_id,
             'package_id' => $request->package_id,
             'no_hp' => $request->no_hp,
