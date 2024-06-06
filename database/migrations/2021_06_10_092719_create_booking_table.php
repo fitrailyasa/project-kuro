@@ -19,8 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable();
             $table->foreignId('package_id')->nullable();
             $table->text('location')->nullable();
-            $table->string('date')->nullable();
-            $table->string('time')->nullable();
+            $table->dateTime('datetime')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('type')->nullable();
             $table->string('status')->nullable()->default('Menunggu Konfirmasi');

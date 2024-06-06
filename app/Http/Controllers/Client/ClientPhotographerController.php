@@ -36,9 +36,10 @@ class ClientPhotographerController extends Controller
             'package_id' => 'required',
             'no_hp' => 'required',
             'location' => 'required',
-            // 'date' => 'required',
-            // 'time' => 'required',
+            'datetime' => 'required',
         ]);
+
+        // dd($request->all());
 
         $quantityWisudawan = (int) $request->input('price_1', 0);
         $pricePerWisudawan = 250000;
@@ -70,8 +71,7 @@ class ClientPhotographerController extends Controller
             'package_id' => $request->package_id,
             'no_hp' => $request->no_hp,
             'location' => $request->location,
-            // 'date' => $request->date,
-            // 'time' => $request->time,
+            'datetime' => $request->datetime,
             'type' => 'P',
             'status' => 'Menunggu Konfirmasi',
             'price_1' => $request->price_1,

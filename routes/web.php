@@ -27,7 +27,6 @@ Route::get('/photographer', [ClientPhotographerController::class, 'index'])->nam
 Route::get('/photographer/{id}', [ClientPhotographerController::class, 'show'])->name('photographer.show');
 
 Auth::routes([
-  'register' => false,
   'reset' => false,
   'verify' => false,
   'confirm' => false,

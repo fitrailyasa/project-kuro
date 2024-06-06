@@ -17,6 +17,17 @@
                             <h3 class="text-center mb-3">{{ $package->name }}</h3>
                             <input type="hidden" name="package_id" id="package_id" value="{{ $package->id }}">
                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="fw-bold">{{ __('Tentukan Tanggal') }}</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="datetime-local" id="datetime" name="datetime" class="form-control"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <img class="img img-fluid" src="{{ asset('assets/img/' . $package->img) }}"
+                                        alt="">
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-2">

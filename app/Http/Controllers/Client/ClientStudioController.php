@@ -37,8 +37,7 @@ class ClientStudioController extends Controller
             'package_id' => 'required',
             'no_hp' => 'required',
             'location' => 'required',
-            // 'date' => 'required',
-            // 'time' => 'required',
+            'datetime' => 'required',
         ]);
 
         $quantityWisudawan = (int) $request->input('price_1', 0);
@@ -71,9 +70,8 @@ class ClientStudioController extends Controller
             'package_id' => $request->package_id,
             'no_hp' => $request->no_hp,
             'location' => $request->location,
-            // 'date' => $request->date,
-            // 'time' => $request->time,
-            'type' => 'P',
+            'datetime' => $request->datetime,
+            'type' => 'S',
             'status' => 'Menunggu Konfirmasi',
             'price_1' => $request->price_1,
             'price_2' => $request->price_2,

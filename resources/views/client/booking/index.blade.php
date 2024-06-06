@@ -49,7 +49,9 @@
                                                     <p><i class="fas fa-info-circle"></i></p>
                                                     <h3>Total Pesanan : Rp.{{ $booking->total ?? 0 }}</h3>
                                                     <div>{{ $booking->token ?? '-' }}</div>
-                                                    <div>{{ $booking->date ?? '-' }} {{ $booking->time ?? '-' }}</div>
+                                                    <div>
+                                                        {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 pt-3 border-top">Klik untuk melihat detail booking
                                                 </div>
@@ -77,7 +79,9 @@
                                                     <p><i class="fas fa-info-circle"></i></p>
                                                     <h3>Total Pesanan : Rp.{{ $booking->total ?? 0 }}</h3>
                                                     <div>{{ $booking->token ?? '-' }}</div>
-                                                    <div>{{ $booking->date ?? '-' }} {{ $booking->time ?? '-' }}</div>
+                                                    <div>
+                                                        {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 pt-3 border-top">Klik untuk melihat detail booking
                                                 </div>
@@ -105,7 +109,9 @@
                                                     <p><i class="fas fa-info-circle"></i></p>
                                                     <h3>Total Pesanan : Rp.{{ $booking->total ?? 0 }}</h3>
                                                     <div>{{ $booking->token ?? '-' }}</div>
-                                                    <div>{{ $booking->date ?? '-' }} {{ $booking->time ?? '-' }}</div>
+                                                    <div>
+                                                        {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 pt-3 border-top">Klik untuk melihat detail booking
                                                 </div>
@@ -133,7 +139,9 @@
                                                     <p><i class="fas fa-info-circle"></i></p>
                                                     <h3>Total Pesanan : Rp.{{ $booking->total ?? 0 }}</h3>
                                                     <div>{{ $booking->token ?? '-' }}</div>
-                                                    <div>{{ $booking->date ?? '-' }} {{ $booking->time ?? '-' }}</div>
+                                                    <div>
+                                                        {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 pt-3 border-top">Klik untuk melihat detail booking
                                                 </div>

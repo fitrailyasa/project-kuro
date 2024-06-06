@@ -21,7 +21,7 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('Tanggal') }}</label>
                             <input type="text" class="form-control" placeholder="date" name="date" id="date"
-                                value="{{ $booking->date }}" disabled>
+                                value="{{ $booking->datetime }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Nama') }}</label>
@@ -46,7 +46,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="card-header text-center mb-2">
-                            <div class="fw-bold">{{ __('Waktu Booking') }} : {{ $booking->date ?? '-' }}
+                            <div class="fw-bold">{{ __('Waktu Booking') }} :
+                                {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}
                                 {{ $booking->time ?? '-' }}</div>
                         </div>
                         <div class="mb-2">
