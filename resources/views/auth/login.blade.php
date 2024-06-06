@@ -5,6 +5,13 @@
 @section('content')
     <div class="d-flex justify-content-center align-items-center pt-5 pb-3">
         <div class="card mt-5 py-5">
+            <div class="d-flex justify-content-center align-items-center">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
             <h3 class="text-center font-weight-bold" style="color: #0093E9;">MASUK</h3>
             <div class="d-flex justify-content-center align-items-center mt-3 mx-3">
                 <form action="{{ route('login') }}" method="POST" class="">
@@ -21,6 +28,9 @@
                     @enderror
                     <button type="submit" class="btn btn-block aktif mt-3">Masuk</button>
                 </form>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <p class="text-center mt-3">Belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
             </div>
         </div>
     </div>

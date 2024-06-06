@@ -11,16 +11,16 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        
-        if(auth()->user()->role == 'admin'){
-                $this->redirectTo = '/admin/dashboard';
-                return $this->redirectTo;
-            }
-        else {
-                $this->redirectTo = '/login';
-                return $this->redirectTo;
-        }
-        
-    }
 
+        if (auth()->user()->role == 'admin') {
+            $this->redirectTo = '/admin/dashboard';
+            return $this->redirectTo;
+        } else if (auth()->user()->role == 'user') {
+            $this->redirectTo = '/booking';
+            return $this->redirectTo;
+        } else {
+            $this->redirectTo = '/login';
+            return $this->redirectTo;
+        }
+    }
 }

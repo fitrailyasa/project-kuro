@@ -1,5 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 use App\Models\Package;
+
 $package = Package::where('type', 'S')->first();
 ?>
 
@@ -25,19 +27,30 @@ $package = Package::where('type', 'S')->first();
                 </ul>
             </div>
             <div class="d-none d-lg-block">
-                <form action="#" method="GET">
-                    <div class="d-flex justify-content-center align-items-center">
-                        {{-- <div class="col-md-12 input-group">
-                            <input type="text" class="form-control" name="query" placeholder="Cari disini..."
-                                value="">
-                            <button class="btn w-25 btn-outline-light b" type="submit">Cari</button>
-                        </div> --}}
-                        <a href="{{ route('login') }}" class="btn aktif btn-outline-light ms-3"><i
-                                class="fas fa-sign-in-alt"></i>
-                            Login</a>
+                @if (Auth::check())
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle d-flex align-items-center" type="button"
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: #0093E9">
+                            {{ Auth::user()->name }} <i class="fas fa-user-circle ms-2 fa-2x"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
-                </form>
+                @else
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{{ route('login') }}" class="btn aktif btn-outline-light ms-3"><i
+                                class="fas fa-sign-in-alt"></i> Login</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 </header>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
