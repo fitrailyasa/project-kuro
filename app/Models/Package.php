@@ -11,6 +11,9 @@ class Package extends Model
     public $timestamps = false;
 
     protected $table = 'package';
+    protected $casts = [
+        'list' => 'array',
+    ];
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = ['id', 'name', 'category_id', 'desc', 'list', 'img', 'price', 'type'];

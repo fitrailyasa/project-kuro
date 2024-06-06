@@ -18,9 +18,7 @@
                             <input type="hidden" name="package_id" id="package_id" value="{{ $package->id }}">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <div class="fw-bold">{{ __('Tentukan Tanggal') }}</div>
-                                </div>
-                                <div class="form-group">
+                                    <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
                                     <input type="datetime-local" id="datetime" name="datetime" class="form-control"
                                         required>
                                 </div>
@@ -30,35 +28,35 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Nama') }}</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
                                         id="name" value="{{ auth()->user()->name }}" disabled>
                                     <input type="text" class="form-control" name="user_id" id="user_id"
                                         value="{{ auth()->user()->id }}" hidden>
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Waktu') }}</label>
                                     <input type="text" class="form-control" placeholder="12.00" name="time"
                                         value="123" id="time">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Lokasi') }}</label>
                                     <input type="text" class="form-control" placeholder="Jl. Garuda" name="location"
                                         value="{{ auth()->user()->alamat }}" id="location">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('No. HP') }}</label>
                                     <input type="text" class="form-control" placeholder="0812345678" name="no_hp"
                                         value="{{ auth()->user()->no_hp }}" id="no_hp">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Available Photograper : ') }}
                                         {{ $available }}</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Tambah Wisudawan | Rp250.000/Wisudawan') }}</label>
                                     <div class="input-group">
                                         <button type="button" class="btn btn-outline-secondary"
@@ -71,7 +69,7 @@
                                     </div>
                                     <input type="hidden" name="price_per_wisudawan" value="250000">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <input type="checkbox" name="location_checkbox" id="location_checkbox"
                                         onchange="toggleLocationInput()">
                                     <label class="form-label">{{ __('Tambah Lokasi | Rp100.000') }}</label>
@@ -79,7 +77,7 @@
                                         value="" id="price_2" disabled>
                                     <input type="hidden" name="price_location" value="100000">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Tambah Durasi | Rp150.000/Jam') }}</label>
                                     <div class="input-group">
                                         <button type="button" class="btn btn-outline-secondary"
@@ -92,7 +90,7 @@
                                     </div>
                                     <input type="hidden" name="price_per_hour" value="150000">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Tambah Foto | Rp50.000/10 Foto') }}</label>
                                     <div class="input-group">
                                         <button type="button" class="btn btn-outline-secondary"
@@ -105,18 +103,18 @@
                                     </div>
                                     <input type="hidden" name="price_per_10_photos" value="5000">
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <input type="checkbox" name="price_5" id="price_5" value="550000"
                                         onchange="calculateTotal()">
                                     <label class="form-label">{{ __('Video Cinematic Max 1 Minute | Rp500.000') }}</label>
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Harga Package') }}</label>
                                     <div id="price_package" class="form-control">Rp 0</div>
                                     {{-- <label class="form-label">{{ __('Harga Tambahan') }}</label> --}}
                                     <div id="total_cost" class="form-control">+Rp 0</div>
                                 </div>
-                                <div class="mb-2">
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Total') }}</label>
                                     <div id="total" class="form-control fw-bold">Rp
                                         {{ number_format($package->price, 0, ',', '.') }}</div>

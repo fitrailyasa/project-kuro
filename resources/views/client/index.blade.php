@@ -49,7 +49,13 @@
                                 <img class="img img-fluid col-12" loading="fuzy"
                                     src="{{ asset('assets/img/' . $package->img) }}" alt="">
                                 <h4>{{ $package->name }}</h4>
-                                <p class="text-justify">{{ $package->list }}</p>
+                                <p>
+                                <ol class="text-justify">
+                                    @foreach ($package->list as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ol>
+                                </p>
                                 <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
                                 <a href="{{ route('photographer.show', $package->id) }}"
                                     class="btn text-white aktif border col-12">Booking Now
@@ -76,7 +82,13 @@
                                 <img class="img img-fluid col-12" loading="fuzy"
                                     src="{{ asset('assets/img/' . $package->img) }}" alt="">
                                 <h4>{{ $package->name }}</h4>
-                                <p class="text-justify">{{ $package->list }}</p>
+                                <p>
+                                <ol class="text-justify">
+                                    @foreach ($package->list as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ol>
+                                </p>
                                 <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
                                 <a href="{{ route('photographer.show', $package->id) }}"
                                     class="btn text-white aktif border col-12">Booking Now
@@ -103,7 +115,13 @@
                                 <img class="img img-fluid col-12" loading="fuzy"
                                     src="{{ asset('assets/img/' . $package->img) }}" alt="">
                                 <h4>{{ $package->name }}</h4>
-                                <p class="text-justify">{{ $package->list }}</p>
+                                <p>
+                                <ol class="text-justify">
+                                    @foreach ($package->list as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ol>
+                                </p>
                                 <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
                                 <a href="{{ route('photographer.show', $package->id) }}"
                                     class="btn text-white aktif border col-12">Booking Now

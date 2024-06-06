@@ -77,6 +77,7 @@
                             @error('list')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                            <small class="form-text text-muted">Pisahkan setiap item dengan koma (,)</small>
                         </div>
                     </div>
                 </div>

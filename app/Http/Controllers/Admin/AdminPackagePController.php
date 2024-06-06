@@ -23,17 +23,18 @@ class AdminPackagePController extends Controller
             'name' => 'required|max:255',
             'category_id' => 'required',
             'desc' => 'max:255',
-            'lis' => 'max:255',
             'img' => 'mimes:jpg,jpeg,png|max:2048',
             'price' => 'required',
         ]);
+
+        $list = preg_split('/\s*,\s*/', $request->list);
 
         $package = Package::create([
             'id' => Str::uuid(),
             'name' => $request->name,
             'category_id' => $request->category_id,
             'desc' => $request->desc,
-            'list' => $request->list,
+            'list' => $list,
             'price' => $request->price,
             'type' => 'P',
         ]);
