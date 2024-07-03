@@ -41,22 +41,22 @@
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_1" id="price_1"
-                                        value="{{ $booking->price_1 }}" disabled>
+                                        value="{{ $booking->price_1 }} orang" disabled>
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">{{ __('Lokasi') }}</label>
+                                    <label class="form-label">{{ __('Lokasi Tambahan') }}</label>
                                     <input type="text" class="form-control" placeholder="Jl. Jalan" name="price_2"
                                         id="price_2" value="{{ $booking->price_2 }}" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Durasi') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_3" id="price_3"
-                                        value="{{ $booking->price_3 }} Jam" disabled>
+                                        value="{{ $booking->price_3 }} jam" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Foto Edit') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_4" id="price_4"
-                                        value="{{ $booking->price_4 }} Foto" disabled>
+                                        value="{{ $booking->price_4 }} foto" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <input type="checkbox" name="price_5" id="price_5"

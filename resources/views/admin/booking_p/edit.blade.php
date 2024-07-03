@@ -19,19 +19,14 @@
                                 id="package_id" value="{{ $booking->Package->name }}" disabled>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">{{ __('Tanggal') }}</label>
-                            <input type="text" class="form-control" placeholder="date" name="date" id="date"
-                                value="{{ $booking->datetime }}" disabled>
+                            <label class="form-label">{{ __('Status') }}</label>
+                            <input type="text" class="form-control" placeholder="status" name="status"
+                                id="status" value="{{ $booking->status }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control" placeholder="name" name="name" id="name"
                                 value="{{ $booking->User->name }}" disabled>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">{{ __('Waktu') }}</label>
-                            <input type="text" class="form-control" placeholder="time" name="time" id="time"
-                                value="{{ $booking->time }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Lokasi') }}</label>
@@ -47,38 +42,32 @@
                     <div class="col-md-6">
                         <div class="card-header text-center mb-2">
                             <div class="fw-bold">{{ __('Waktu Booking') }} :
-                                {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}
-                                {{ $booking->time ?? '-' }}</div>
+                                {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}</div>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
                             <input type="text" class="form-control" placeholder="price_1" name="price_1"
-                                id="price_1" value="Rp.{{ $booking->price_1 }}" disabled>
+                                id="price_1" value="{{ $booking->price_1 }} orang" disabled>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">{{ __('Lokasi') }}</label>
+                            <label class="form-label">{{ __('Lokasi Tambahan') }}</label>
                             <input type="text" class="form-control" placeholder="price_2" name="price_2"
-                                id="price_2" value="Rp.{{ $booking->price_2 }}" disabled>
+                                id="price_2" value="{{ $booking->price_2 }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Durasi') }}</label>
                             <input type="text" class="form-control" placeholder="price_3" name="price_3"
-                                id="price_3" value="Rp.{{ $booking->price_3 }}" disabled>
+                                id="price_3" value="{{ $booking->price_3 }} jam" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Foto Edit') }}</label>
                             <input type="text" class="form-control" placeholder="price_4" name="price_4"
-                                id="price_4" value="Rp.{{ $booking->price_4 }}" disabled>
+                                id="price_4" value="{{ $booking->price_4 }} foto" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Video Cinematic') }}</label>
                             <input type="text" class="form-control" placeholder="price_5" name="price_5"
-                                id="price_5" value="Rp.{{ $booking->price_5 }}" disabled>
-                        </div>
-                        <div class="mb-2">
-                            <label class="form-label">{{ __('Status') }}</label>
-                            <input type="text" class="form-control" placeholder="status" name="status"
-                                id="status" value="{{ $booking->status }}" disabled>
+                                id="price_5" value="{{ $booking->price_5 }}" disabled>
                         </div>
                     </div>
                 </div>
