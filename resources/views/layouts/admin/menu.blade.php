@@ -82,6 +82,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="{{ route('admin.available.index') }}" class="nav-link text-white @yield('activeAvailable')">
+                    <i class="nav-icon fas fa-camera"></i>
+                    <p>
+                        AVALIABLE
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>
                     @csrf
                 </form>

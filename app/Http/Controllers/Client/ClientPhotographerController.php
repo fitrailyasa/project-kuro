@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Booking;
+use App\Models\Available;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ClientPhotographerController extends Controller
 
     public function order(string $id)
     {
-        $available = 10;
+        $available = Available::first();
         $package = Package::where('type', 'P')->findOrFail($id);
         return view('client.photographer.order', compact('package', 'available'));
     }

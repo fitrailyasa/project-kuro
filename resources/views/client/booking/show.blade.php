@@ -12,10 +12,10 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <a href="{{ route('booking') }}"><i class="fa fa-arrow-left text-dark"></i></a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Package') }}</label>
                                     <input type="text" class="form-control" placeholder="package_id" name="package_id"
@@ -37,7 +37,7 @@
                                         id="no_hp" value="{{ $booking->no_hp }}" disabled>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_1" id="price_1"

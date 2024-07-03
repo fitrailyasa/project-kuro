@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminPackagePController;
 use App\Http\Controllers\Admin\AdminPackageSController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminInventoryController;
+use App\Http\Controllers\Admin\AdminAvailableController;
 use App\Http\Controllers\Client\ClientStudioController;
 use App\Http\Controllers\Client\ClientPhotographerController;
 use App\Http\Controllers\Client\ClientBookingController;
@@ -97,6 +98,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/inventory', [AdminInventoryController::class, 'store'])->name('inventory.store');
     Route::put('/inventory/{id}/update', [AdminInventoryController::class, 'update'])->name('inventory.update');
     Route::delete('/inventory/{id}/destroy', [AdminInventoryController::class, 'destroy'])->name('inventory.destroy');
+
+    // CRUD AVAILABLE
+    Route::get('/available', [AdminAvailableController::class, 'index'])->name('available.index');
+    Route::put('/available/{id}/update', [AdminAvailableController::class, 'update'])->name('available.update');
   });
 });
 

@@ -19,27 +19,22 @@
                             <input type="hidden" name="package_id" id="package_id" value="{{ $package->id }}">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
-                                    <input type="datetime-local" id="datetime" name="datetime" class="form-control"
-                                        required>
-                                </div>
-                                <div class="form-group">
                                     <img class="img img-fluid" src="{{ asset('assets/img/' . $package->img) }}"
                                         alt="">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
+                                    <input type="datetime-local" id="datetime" name="datetime" class="form-control"
+                                        required>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label">{{ __('Nama') }}</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
                                         id="name" value="{{ auth()->user()->name }}" disabled>
                                     <input type="text" class="form-control" name="user_id" id="user_id"
                                         value="{{ auth()->user()->id }}" hidden>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">{{ __('Waktu') }}</label>
-                                    <input type="text" class="form-control" placeholder="12.00" name="time"
-                                        value="123" id="time">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Lokasi') }}</label>
@@ -53,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Available Photograper : ') }}
-                                        {{ $available }}</label>
+                                        {{ $available->available }}</label>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -112,7 +107,6 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Harga Package') }}</label>
                                     <div id="price_package" class="form-control">Rp 0</div>
-                                    {{-- <label class="form-label">{{ __('Harga Tambahan') }}</label> --}}
                                     <div id="total_cost" class="form-control">+Rp 0</div>
                                 </div>
                                 <div class="form-group">
