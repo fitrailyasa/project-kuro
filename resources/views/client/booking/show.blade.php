@@ -11,11 +11,9 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{ route('booking') }}"><i class="fa fa-arrow-left text-dark mb-2"></i></a>
                         <div class="row">
-                            <div class="col-md-2">
-                                <a href="{{ route('booking') }}"><i class="fa fa-arrow-left text-dark"></i></a>
-                            </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Package') }}</label>
                                     <input type="text" class="form-control" placeholder="package_id" name="package_id"
@@ -37,7 +35,7 @@
                                         id="no_hp" value="{{ $booking->no_hp }}" disabled>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Jumlah Orang') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_1" id="price_1"
@@ -62,6 +60,26 @@
                                     <input type="checkbox" name="price_5" id="price_5"
                                         {{ $booking->price_5 ? 'checked' : '' }}>
                                     <label class="form-label">{{ __('Video Cinematic') }}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card p-3">
+                                    <h4>Metode Pembayaran</h4>
+                                    <a class="row text-success" href="https://wa.me/+628123456789" class="text-success">
+                                        <div class="col-md-6">
+                                            <p>Whatsapp <br>
+                                                08123456789
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <i class="fa fa-whatsapp fa-2x pt-3"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card p-3">
+                                    <h5>Total:</h5>
+                                    <h3 class="fw-bold mb-4">Rp{{ number_format($booking->total ?? 0, 0, ',', '.') }}</h3>
+                                    <a href="https://wa.me/+628123456789" class="btn btn-success">Go to Whatsapp</a>
                                 </div>
                             </div>
                         </div>
