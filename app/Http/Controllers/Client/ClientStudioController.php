@@ -36,7 +36,6 @@ class ClientStudioController extends Controller
             'user_id' => 'required|max:255',
             'package_id' => 'required',
             'no_hp' => 'required',
-            'location' => 'required',
             'datetime' => 'required',
         ]);
 
@@ -70,7 +69,7 @@ class ClientStudioController extends Controller
             'user_id' => $request->user_id,
             'package_id' => $request->package_id,
             'no_hp' => $request->no_hp,
-            'location' => $request->location,
+            'location' => 'Studio',
             'datetime' => $request->datetime,
             'type' => 'S',
             'status' => 'Menunggu Konfirmasi',

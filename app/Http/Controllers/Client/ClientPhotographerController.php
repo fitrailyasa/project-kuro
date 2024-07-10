@@ -40,8 +40,8 @@ class ClientPhotographerController extends Controller
             'datetime' => 'required',
         ]);
 
-        $quantityWisudawan = (int) $request->input('price_1', 0);
-        $pricePerWisudawan = 250000;
+        $quantityOrang = (int) $request->input('price_1', 0);
+        $pricePerOrang = 250000;
 
         $isLocationChecked = $request->has('price_2');
         $priceLocation = $isLocationChecked ? 100000 : 0;
@@ -58,7 +58,7 @@ class ClientPhotographerController extends Controller
         $total = Package::where('type', 'P')->findOrFail($request->package_id)->price;
 
 
-        $total += ($quantityWisudawan * $pricePerWisudawan) +
+        $total += ($quantityOrang * $pricePerOrang) +
             ($durationHours * $pricePerHour) +
             ($additionalPhotos * $pricePer10Photos) +
             $priceCinematicVideo +

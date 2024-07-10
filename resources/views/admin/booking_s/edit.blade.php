@@ -45,7 +45,7 @@
                                 {{ date('Y-m-d H:i', strtotime($booking->datetime)) }}</div>
                         </div>
                         <div class="mb-2">
-                            <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
+                            <label class="form-label">{{ __('Jumlah Orang') }}</label>
                             <input type="text" class="form-control" placeholder="price_1" name="price_1"
                                 id="price_1" value="{{ $booking->price_1 }} orang" disabled>
                         </div>

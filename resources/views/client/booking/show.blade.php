@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="mb-2">
-                                    <label class="form-label">{{ __('Jumlah Wisudawan') }}</label>
+                                    <label class="form-label">{{ __('Jumlah Orang') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_1" id="price_1"
                                         value="{{ $booking->price_1 }} orang" disabled>
                                 </div>
