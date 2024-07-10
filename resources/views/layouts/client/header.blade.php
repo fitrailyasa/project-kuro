@@ -36,6 +36,9 @@ $package = Package::where('type', 'S')->first();
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                             <li>
+                                <a href="{{ route('profile.edit') }}" class="dropdown-item">Profile</a>
+                            </li>
+                            <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Logout</button>

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminAvailableController;
 use App\Http\Controllers\Client\ClientStudioController;
 use App\Http\Controllers\Client\ClientPhotographerController;
 use App\Http\Controllers\Client\ClientBookingController;
+use App\Http\Controllers\ProfileController;
 
 // CLIENT SIDE
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
@@ -40,7 +41,8 @@ Route::post('/register', [RegisterController::class, 'create'])->name('regist');
 Route::middleware(['auth'])->group(function () {
 
   Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-  // Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
   Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
   Route::get('/studio/{id}/order', [ClientStudioController::class, 'order'])->name('studio.order');

@@ -22,7 +22,7 @@
                 @endif
             </div>
             <div class="info">
-                <a href="#" class="d-block text-white">{{ auth()->user()->name }}</a>
+                <a href="{{ route('profile.edit') }}" class="d-block text-white">{{ auth()->user()->name }}</a>
             </div>
         </div>
 
