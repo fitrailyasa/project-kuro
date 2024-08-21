@@ -17,48 +17,48 @@
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Package') }}</label>
                                     <input type="text" class="form-control" placeholder="package_id" name="package_id"
-                                        id="package_id" value="{{ $booking->Package->name }}" disabled>
+                                        id="package_id" value="{{ $booking->Package->name ?? '-' }}" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Nama') }}</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
-                                        id="name" value="{{ $booking->User->name }}" disabled>
+                                        id="name" value="{{ $booking->User->name ?? '-' }}" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Lokasi') }}</label>
                                     <input type="text" class="form-control" placeholder="location" name="location"
-                                        id="location" value="{{ $booking->location }}" disabled>
+                                        id="location" value="{{ $booking->location ?? '-' }}" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('No. HP') }}</label>
                                     <input type="text" class="form-control" placeholder="no_hp" name="no_hp"
-                                        id="no_hp" value="{{ $booking->no_hp }}" disabled>
+                                        id="no_hp" value="{{ $booking->no_hp ?? '-' }}" disabled>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Jumlah Orang') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_1" id="price_1"
-                                        value="{{ $booking->price_1 }} orang" disabled>
+                                        value="{{ $booking->price_1 ?? '-' }} orang" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Lokasi Tambahan') }}</label>
                                     <input type="text" class="form-control" placeholder="Jl. Jalan" name="price_2"
-                                        id="price_2" value="{{ $booking->price_2 }}" disabled>
+                                        id="price_2" value="{{ $booking->price_2 ?? '-' }}" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Durasi') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_3" id="price_3"
-                                        value="{{ $booking->price_3 }} jam" disabled>
+                                        value="{{ $booking->price_3 ?? '-' }} jam" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Foto Edit') }}</label>
                                     <input type="text" class="form-control" placeholder="1" name="price_4" id="price_4"
-                                        value="{{ $booking->price_4 }} foto" disabled>
+                                        value="{{ $booking->price_4 ?? '-' }} foto" disabled>
                                 </div>
                                 <div class="mb-2">
                                     <input type="checkbox" name="price_5" id="price_5"
-                                        {{ $booking->price_5 ? 'checked' : '' }}>
+                                        {{ $booking->price_5 ?? '-' ? 'checked' : '' }}>
                                     <label class="form-label">{{ __('Video Cinematic') }}</label>
                                 </div>
                             </div>

@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Available Photograper : ') }}
-                                        {{ $available->available }}</label>
+                                        {{ $available->available ?? '-' }}</label>
                                 </div>
                             </div>
                             <div class="col-md-4">

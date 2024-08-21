@@ -27,7 +27,7 @@
                             <label class="form-label">{{ __('Available') }}</label>
                             <input type="number" class="form-control @error('available') is-invalid @enderror"
                                 placeholder="available" name="available" id="available"
-                                value="{{ $available->available }}" required>
+                                value="{{ $available->available ?? '-' }}" required>
                             @error('available')
                                 <div class="invalid-feedback">{{ $message }}
                                 </div>

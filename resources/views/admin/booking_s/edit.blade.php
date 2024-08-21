@@ -16,27 +16,27 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('Package') }}</label>
                             <input type="text" class="form-control" placeholder="package_id" name="package_id"
-                                id="package_id" value="{{ $booking->Package->name }}" disabled>
+                                id="package_id" value="{{ $booking->Package->name ?? '-' }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Status') }}</label>
                             <input type="text" class="form-control" placeholder="status" name="status"
-                                id="status" value="{{ $booking->status }}" disabled>
+                                id="status" value="{{ $booking->status ?? '-' }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control" placeholder="name" name="name" id="name"
-                                value="{{ $booking->User->name }}" disabled>
+                                value="{{ $booking->User->name ?? '-' }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Lokasi') }}</label>
                             <input type="text" class="form-control" placeholder="location" name="location"
-                                id="waktu" value="{{ $booking->location }}" disabled>
+                                id="waktu" value="{{ $booking->location ?? '-' }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('No. HP') }}</label>
                             <input type="text" class="form-control" placeholder="no_hp" name="no_hp" id="no_hp"
-                                value="{{ $booking->no_hp }}" disabled>
+                                value="{{ $booking->no_hp ?? '-' }}" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -46,28 +46,28 @@
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Jumlah Orang') }}</label>
-                            <input type="text" class="form-control" placeholder="price_1" name="price_1"
-                                id="price_1" value="{{ $booking->price_1 }} orang" disabled>
+                            <input type="text" class="form-control" name="price_1" id="price_1"
+                                value="{{ $booking->price_1 ?? '-' }} orang" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Lokasi Tambahan') }}</label>
-                            <input type="text" class="form-control" placeholder="price_2" name="price_2"
-                                id="price_2" value="{{ $booking->price_2 }}" disabled>
+                            <input type="text" class="form-control" name="price_2" id="price_2"
+                                value="{{ $booking->price_2 ?? '-' }}" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Durasi') }}</label>
-                            <input type="text" class="form-control" placeholder="price_3" name="price_3"
-                                id="price_3" value="{{ $booking->price_3 }} jam" disabled>
+                            <input type="text" class="form-control" name="price_3" id="price_3"
+                                value="{{ $booking->price_3 ?? '-' }} jam" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Foto Edit') }}</label>
-                            <input type="text" class="form-control" placeholder="price_4" name="price_4"
-                                id="price_4" value="{{ $booking->price_4 }} foto" disabled>
+                            <input type="text" class="form-control" name="price_4" id="price_4"
+                                value="{{ $booking->price_4 ?? '-' }} foto" disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Video Cinematic') }}</label>
-                            <input type="text" class="form-control" placeholder="price_5" name="price_5"
-                                id="price_5" value="{{ $booking->price_5 }}" disabled>
+                            <input type="text" class="form-control" name="price_5" id="price_5"
+                                value="{{ $booking->price_5 ?? '-' }}" disabled>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                 @method('PUT')
                 <div class="card-header">
                     <input type="hidden" name="status" id="status" value="Diproses">
-                    <h4 class="text-center">Total : Rp.{{ $booking->total }}</h4>
+                    <h4 class="text-center">Total : Rp.{{ $booking->total ?? '-' }}</h4>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary">Konfirmasi Pesanan</button>
                 <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success"><i
@@ -109,7 +109,7 @@
                 @method('PUT')
                 <div class="card-header">
                     <input type="hidden" name="status" id="status" value="Selesai">
-                    <h4 class="text-center">Total : Rp.{{ $booking->total }}</h4>
+                    <h4 class="text-center">Total : Rp.{{ $booking->total ?? '-' }}</h4>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary">Pesanan Selesai</button>
                 <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success"><i

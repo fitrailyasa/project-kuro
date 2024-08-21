@@ -11,7 +11,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>{{ $users }}</h3>
+                    <h3>{{ $user }}</h3>
 
                     <p>{{ __('Pengguna') }}</p>
                 </div>
@@ -24,11 +24,11 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $categories }}</h3>
+                    <h3>{{ $available->available ?? '-' }}</h3>
 
-                    <p>{{ __('Kategori') }}</p>
+                    <p>{{ __('Available') }}</p>
                 </div>
-                <a href="{{ route('admin.category.index') }}" class="small-box-footer">Kelola Data <i
+                <a href="{{ route('admin.available.index') }}" class="small-box-footer">Kelola Data <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -37,11 +37,12 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>0</h3>
+                    <h3>{{ $inventory }}</h3>
 
                     <p>{{ __('Inventaris') }}</p>
                 </div>
-                <a href="#" class="small-box-footer">Kelola Data <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.inventory.index') }}" class="small-box-footer">Kelola Data <i
+                        class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -49,7 +50,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $categories }}</h3>
+                    <h3>{{ $category }}</h3>
 
                     <p>{{ __('Category') }}</p>
                 </div>
@@ -65,7 +66,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{ $bookings }}</h3>
+                    <h3>{{ $booking_s }}</h3>
 
                     <p>{{ __('Booking Studio') }}</p>
                 </div>
@@ -78,7 +79,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>{{ $packages }}</h3>
+                    <h3>{{ $package_s }}</h3>
 
                     <p>{{ __('Package Studio') }}</p>
                 </div>
@@ -91,7 +92,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>{{ $bookings }}</h3>
+                    <h3>{{ $booking_p }}</h3>
 
                     <p>{{ __('Booking Photographer') }}</p>
                 </div>
@@ -104,7 +105,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>{{ $packages }}</h3>
+                    <h3>{{ $package_s }}</h3>
 
                     <p>{{ __('Package Photographer') }}</p>
                 </div>
