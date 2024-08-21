@@ -33,28 +33,3 @@ $package = Package::where('type', 'S')->first();
         </div>
     </div>
 </footer>
-
-
-<footer class="footer px-3 d-block d-lg-none border-top text-white mt-3 fixed-bottom" style="background-color: #111111">
-    <div class="container">
-        <div class="d-flex">
-            <ul class="nav col-12 align-items-center justify-content-between">
-                <li><a href="{{ route('beranda') }}" class="nav-link p-3 text-white fw-bold rounded border"><i
-                            class="fas fa-home fs-4"></i></a>
-                </li>
-                <li>
-                    <a href="{{ route('studio.show', $package->id) }}" class="nav-link p-3 text-white fw-bold "><i
-                            class="fas fa-crown fs-4"></i></a>
-                </li>
-                <li>
-                    <a href="{{ route('photographer') }}" class="nav-link p-3 text-white fw-bold "><i
-                            class="fas fa-tv fs-4"></i></a>
-                </li>
-                <li>
-                    <a href="{{ route('booking') }}" class="nav-link p-3 text-white fw-bold "><i
-                            class="fas fa-tag fs-4"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer>
