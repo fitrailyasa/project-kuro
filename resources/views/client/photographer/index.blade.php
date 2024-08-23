@@ -43,7 +43,7 @@
             </h3>
             <div class="row">
                 @foreach ($packages as $package)
-                    @if ($package->Category->name == 'Graduation Personal')
+                    @if ($package->Category && $package->Category->name == 'Graduation Personal')
                         <div class="col-sm-4 col-md-4 p-3">
                             <div class="card border rounded p-3">
                                 <img class="img img-fluid col-12" loading="fuzy"
@@ -51,9 +51,13 @@
                                 <h4>{{ $package->name }}</h4>
                                 <p>
                                 <ol class="text-justify">
-                                    @foreach ($package->list as $item)
-                                        <li>{{ $item }}</li>
-                                    @endforeach
+                                    @if (is_array($package->list) || is_object($package->list))
+                                        @foreach ($package->list as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    @else
+                                        <li>No items available</li>
+                                    @endif
                                 </ol>
                                 </p>
                                 <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
@@ -76,7 +80,7 @@
             </h3>
             <div class="row">
                 @foreach ($packages as $package)
-                    @if ($package->Category->name == 'Graduation Group')
+                    @if ($package->Category && $package->Category->name == 'Graduation Group')
                         <div class="col-sm-4 col-md-4 p-3">
                             <div class="card border rounded p-3">
                                 <img class="img img-fluid col-12" loading="fuzy"
@@ -84,9 +88,13 @@
                                 <h4>{{ $package->name }}</h4>
                                 <p>
                                 <ol class="text-justify">
-                                    @foreach ($package->list as $item)
-                                        <li>{{ $item }}</li>
-                                    @endforeach
+                                    @if (is_array($package->list) || is_object($package->list))
+                                        @foreach ($package->list as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    @else
+                                        <li>No items available</li>
+                                    @endif
                                 </ol>
                                 </p>
                                 <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
@@ -109,7 +117,7 @@
             </h3>
             <div class="row">
                 @foreach ($packages as $package)
-                    @if ($package->Category->name == 'Other Events')
+                    @if ($package->Category && $package->Category->name == 'Other Events')
                         <div class="col-sm-4 col-md-4 p-3">
                             <div class="card border rounded p-3">
                                 <img class="img img-fluid col-12" loading="fuzy"
@@ -117,9 +125,13 @@
                                 <h4>{{ $package->name }}</h4>
                                 <p>
                                 <ol class="text-justify">
-                                    @foreach ($package->list as $item)
-                                        <li>{{ $item }}</li>
-                                    @endforeach
+                                    @if (is_array($package->list) || is_object($package->list))
+                                        @foreach ($package->list as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    @else
+                                        <li>No items available</li>
+                                    @endif
                                 </ol>
                                 </p>
                                 <h3><b>Rp{{ number_format($package->price, 0, ',', '.') }}</b></h3>
