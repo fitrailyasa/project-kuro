@@ -78,7 +78,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('List') }}</label>
-                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list" id="list"
+                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list[]" id="list[]"
                                 rows="4">{{ is_array($package->list) ? implode(', ', array_map('trim', $package->list)) : $package->list }}
                                 </textarea>
                             @error('list')

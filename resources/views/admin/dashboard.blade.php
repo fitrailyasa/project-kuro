@@ -22,7 +22,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $available->available ?? '-' }}</h3>
 
@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $category }}</h3>
 
@@ -77,7 +77,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>{{ $package_s }}</h3>
 
@@ -103,7 +103,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>{{ $package_s }}</h3>
 

@@ -72,7 +72,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('List') }}</label>
-                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list" id="list"
+                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list[]" id="list[]"
                                 rows="4"></textarea>
                             @error('list')
                                 <div class="invalid-feedback">{{ $message }}</div>

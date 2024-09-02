@@ -22,19 +22,19 @@ class AdminPackagePController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'category_id' => 'required',
-            'desc' => 'max:255',
+            'desc' => 'max:1000',
+            'list' => 'array',
+            'list.*' => 'string|max:255',
             'img' => 'mimes:jpg,jpeg,png|max:2048',
             'price' => 'required',
         ]);
-
-        $list = preg_split('/\s*,\s*/', $request->list);
 
         $package = Package::create([
             'id' => Str::uuid(),
             'name' => $request->name,
             'category_id' => $request->category_id,
             'desc' => $request->desc,
-            'list' => $list,
+            'list' => json_encode($request->input('list', [])),
             'price' => $request->price,
             'type' => 'P',
         ]);
@@ -53,12 +53,17 @@ class AdminPackagePController extends Controller
     public function update(Request $request, $id)
     {
         $package = Package::findOrFail($id);
+        $list = $package->list;
+        if (is_string($list)) {
+            $list = json_decode($list, true); // Decode JSON string to array
+        }
 
         $request->validate([
             'name' => 'required|max:255',
             'category_id' => 'required',
-            'desc' => 'max:255',
-            'list' => 'max:255',
+            'desc' => 'max:1000',
+            'list' => 'array',
+            'list.*' => 'string|max:255',
             'img' => 'mimes:jpg,jpeg,png|max:2048',
             'price' => 'required',
         ]);
@@ -67,7 +72,7 @@ class AdminPackagePController extends Controller
             'name' => $request->name,
             'category_id' => $request->category_id,
             'desc' => $request->desc,
-            'list' => $request->list,
+            'list' => json_encode($request->input('list')),
             'price' => $request->price,
             'type' => 'P',
         ]);
