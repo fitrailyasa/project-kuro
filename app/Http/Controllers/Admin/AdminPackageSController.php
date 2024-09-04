@@ -14,7 +14,7 @@ class AdminPackageSController extends Controller
     {
         $categories = Category::all();
         $packages = Package::where('type', 'S')->get();
-        return view('admin.package_s.index', compact('packages', 'categories'));
+        return view('admin.package_p.index', compact('packages', 'categories'));
     }
 
     public function store(Request $request)
@@ -23,18 +23,19 @@ class AdminPackageSController extends Controller
             'name' => 'required|max:255',
             'category_id' => 'required',
             'desc' => 'max:1000',
-            'list' => 'array',
-            'list.*' => 'string|max:255',
+            'list' => 'nullable|string',
             'img' => 'mimes:jpg,jpeg,png|max:2048',
             'price' => 'required',
         ]);
+
+        $list = $this->convertCommaSeparatedToArray($request->input('list'));
 
         $package = Package::create([
             'id' => Str::uuid(),
             'name' => $request->name,
             'category_id' => $request->category_id,
             'desc' => $request->desc,
-            'list' => json_encode($request->input('list', [])),
+            'list' => $list,
             'price' => $request->price,
             'type' => 'S',
         ]);
@@ -58,17 +59,18 @@ class AdminPackageSController extends Controller
             'name' => 'required|max:255',
             'category_id' => 'required',
             'desc' => 'max:1000',
-            'list' => 'array',
-            'list.*' => 'string|max:255',
+            'list' => 'nullable|string',
             'img' => 'mimes:jpg,jpeg,png|max:2048',
             'price' => 'required',
         ]);
+
+        $list = $this->convertCommaSeparatedToArray($request->input('list'));
 
         $package->update([
             'name' => $request->name,
             'category_id' => $request->category_id,
             'desc' => $request->desc,
-            'list' => json_encode($request->input('list')),
+            'list' => $list,
             'price' => $request->price,
             'type' => 'S',
         ]);
@@ -90,5 +92,13 @@ class AdminPackageSController extends Controller
         $package->delete();
 
         return back()->with('alert', 'Berhasil Hapus Data package!');
+    }
+
+    private function convertCommaSeparatedToArray($value)
+    {
+        if (is_string($value)) {
+            return array_map('trim', explode(',', $value));
+        }
+        return [];
     }
 }

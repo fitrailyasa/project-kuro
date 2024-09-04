@@ -36,7 +36,7 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" required>
+                                placeholder="name" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -44,7 +44,7 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('Price') }}</label>
                             <input type="number" class="form-control @error('price') is-invalid @enderror"
-                                placeholder="10000" name="price" id="price" required>
+                                placeholder="10000" name="price" id="price" value="{{ old('price') }}" required>
                             @error('price')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -72,8 +72,10 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('List') }}</label>
-                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list[]" id="list[]"
-                                rows="4"></textarea>
+                            <textarea class="form-control mb-1 @error('list') is-invalid @enderror" placeholder="list" name="list" id="list"
+                                rows="4">
+                            {{ old('list') }}
+                        </textarea>
                             @error('list')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
