@@ -9,11 +9,11 @@ $package = Package::where('type', 'S')->first();
             <div class="col-md-8">
                 <img class="img-fluid bg-white rounded-circle p-1 mb-2" width="50"
                     src="{{ asset('assets/img/logo.png') }}" alt="Logo">
-                <p class="text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reprehenderit
-                    doloremque eaque incidunt. Maxime adipisci laudantium architecto odio dicta perferendis ipsum
-                    dolores suscipit animi natus, amet quas fugit officiis aut earum quo, sit labore nam. Quo nisi sequi
-                    placeat aspernatur, voluptatibus labore facere atque quis ea hic, delectus magni necessitatibus ipsa
-                    maiores vel? Repudiandae nulla est dolor praesentium aliquam magni.</p>
+                <p class="text-justify">We applaud your great achievement in completing your studies! We understand the
+                    importance of preserving beautiful memories at important moments in life. We'd love to be part of
+                    your journey by capturing and celebrating these meaningful moments.
+                    With our professional photographers,
+                    we are ready to capture your special moments for your graduation portraits.</p>
                 <div>Copyright &copy; 2024 || PROJECT KURO</div>
             </div>
             <div class="col-md-4 text-right">
@@ -27,8 +27,9 @@ $package = Package::where('type', 'S')->first();
                     <div class="fw-bold">KEBIJAKAN PRIVASI</div>
                     <div class="fw-bold">SYARAT & KETENTUAN</div>
                 </div>
-                <div><i class="fa fa-phone pe-2"></i> 026-5264-4190</div>
-                <div>Jl. A Kadir I, Rajabasa, Kec. Rajabasa, Kota Bandar Lampung, Lampung 35144</div>
+                <a class="text-white" href="https://wa.me/+6287889165766"><i class="fa fa-phone pe-2"></i>
+                    +6287889165766</a>
+                <div>Jl. A Kadir I, Rajabasa, Kec. Rajabasa, Kota Bandar Lampung,Lampung 35144</div>
             </div>
         </div>
     </div>

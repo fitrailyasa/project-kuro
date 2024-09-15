@@ -85,7 +85,7 @@
                 <a href="{{ route('admin.available.index') }}" class="nav-link text-white @yield('activeAvailable')">
                     <i class="nav-icon fas fa-camera"></i>
                     <p>
-                        AVALIABLE
+                        AVAILABLE
                     </p>
                 </a>
             </li>

@@ -37,6 +37,8 @@
                             @include('admin.user.edit')
                             @if ($user->email != 'admin@admin.com')
                                 @include('admin.user.delete')
+                            @elseif (auth()->user()->email == 'super@admin.com')
+                                @include('admin.user.delete')
                             @endif
                         @endif
                     </td>
