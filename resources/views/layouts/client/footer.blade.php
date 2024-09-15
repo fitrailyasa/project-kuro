@@ -28,7 +28,7 @@ $package = Package::where('type', 'S')->first();
                     <div class="fw-bold">SYARAT & KETENTUAN</div>
                 </div>
                 <div><i class="fa fa-phone pe-2"></i> 026-5264-4190</div>
-                <div>Jl. Raya Kalipucang No.232, Kalipucang, Kec. Kalipucang, Kab. Pangandaran, Jawa Barat 46397</div>
+                <div>Jl. A Kadir I, Rajabasa, Kec. Rajabasa, Kota Bandar Lampung, Lampung 35144</div>
             </div>
         </div>
     </div>
