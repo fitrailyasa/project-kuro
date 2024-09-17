@@ -14,7 +14,7 @@ class AdminPackageSController extends Controller
     {
         $categories = Category::all();
         $packages = Package::where('type', 'S')->get();
-        return view('admin.package_p.index', compact('packages', 'categories'));
+        return view('admin.package_s.index', compact('packages', 'categories'));
     }
 
     public function store(Request $request)
