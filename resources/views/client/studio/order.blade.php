@@ -13,7 +13,6 @@
                     <div class="card-body">
                         <form action="{{ route('studio.checkout') }}" method="POST" class="row">
                             @csrf
-                            <a href="{{ route('studio.show', $package->id) }}"><i class="fa fa-arrow-left text-dark"></i></a>
                             <h3 class="text-center mb-3">{{ $package->name }}</h3>
                             <input type="hidden" name="package_id" id="package_id" value="{{ $package->id }}">
                             <div class="col-md-4">
@@ -26,7 +25,7 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
                                     <input type="datetime-local" id="datetime" name="datetime" class="form-control"
-                                        required>
+                                        required min="">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Nama') }}</label>
@@ -58,7 +57,14 @@
                                     </div>
                                     <input type="hidden" name="price_per_Orang" value="250000">
                                 </div>
-                                <input type="hidden" name="price2" value="">
+                                <div class="form-group">
+                                    <input type="checkbox" name="location_checkbox" id="location_checkbox"
+                                        onchange="toggleLocationInput()">
+                                    <label class="form-label">{{ __('Tambah Lokasi | Rp100.000') }}</label>
+                                    <input type="text" class="form-control" placeholder="Lokasi" name="price_2"
+                                        value="" id="price_2" disabled>
+                                    <input type="hidden" name="price_location" value="100000">
+                                </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Tambah Durasi | Rp150.000/Jam') }}</label>
                                     <div class="input-group">
@@ -156,6 +162,23 @@
             document.getElementById('total').textContent = 'Rp ' + total.toLocaleString();
         }
         document.getElementById('price_package').textContent = 'Rp ' + packagePrice.toLocaleString();
+
+        function setMinDateTime() {
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var hours = ('0' + today.getHours()).slice(-2);
+            var minutes = ('0' + today.getMinutes()).slice(-2);
+
+            var minDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+
+            document.getElementById('datetime').setAttribute('min', minDateTime);
+        }
+
+        window.onload = function() {
+            setMinDateTime();
+        };
     </script>
 
 @endsection

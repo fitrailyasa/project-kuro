@@ -26,6 +26,9 @@ class ClientStudioController extends Controller
     public function order(string $id)
     {
         $available = Available::first();
+        if ($available->available == 0) {
+            return back()->with('alert', 'Tidak Ada Photographer Yang Tersedia!');
+        }
         $package = Package::where('type', 'S')->findOrFail($id);
         return view('client.studio.order', compact('package', 'available'));
     }
@@ -38,6 +41,10 @@ class ClientStudioController extends Controller
             'no_hp' => 'required',
             'datetime' => 'required',
         ]);
+
+        $available = Available::first();
+        $available->available = $available->available - 1;
+        $available->save();
 
         $quantityWisudawan = (int) $request->input('price_1', 0);
         $pricePerWisudawan = 250000;

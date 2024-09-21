@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
                                     <input type="datetime-local" id="datetime" name="datetime" class="form-control"
-                                        required>
+                                        required min="">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Nama') }}</label>
@@ -170,6 +170,22 @@
             document.getElementById('total').textContent = 'Rp ' + total.toLocaleString();
         }
         document.getElementById('price_package').textContent = 'Rp ' + packagePrice.toLocaleString();
+        
+        function setMinDateTime() {
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var hours = ('0' + today.getHours()).slice(-2);
+            var minutes = ('0' + today.getMinutes()).slice(-2);
+
+            var minDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+
+            document.getElementById('datetime').setAttribute('min', minDateTime);
+        }
+        window.onload = function() {
+            setMinDateTime();
+        };
     </script>
 
 @endsection

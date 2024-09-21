@@ -24,6 +24,11 @@
                             <a class="btn aktif btn-block" href="{{ route('photographer.order', $package->id) }}"><i
                                     class="fa fa-shopping-cart"></i>
                                 {{ __('BOOKING NOW') }}</a>
+                                @if (session('alert'))
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ session('alert') }}
+                                    </div>
+                                @endif
                         </div>
                     </div>
                 </div>

@@ -65,10 +65,10 @@
                             <div class="col-md-4">
                                 <div class="card p-3">
                                     <h4>Metode Pembayaran</h4>
-                                    <a class="row text-success" href="https://wa.me/+628123456789" class="text-success">
+                                    <a class="row text-success" href="https://wa.me/+6287889165766" class="text-success">
                                         <div class="col-md-6">
                                             <p>Whatsapp <br>
-                                                08123456789
+                                                087889165766
                                             </p>
                                         </div>
                                         <div class="col-md-6 text-right">

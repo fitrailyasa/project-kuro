@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Available;
 use App\Models\Booking;
 use App\Models\Package;
 use Illuminate\Http\Request;
@@ -37,6 +38,12 @@ class AdminBookingPController extends Controller
             'status' => $request->status,
         ]);
 
+        if ($request->status == 'Selesai') {
+            $available = Available::first();
+            $available->available = $available->available + 1;
+            $available->save();
+        }
+
         return back()->with('alert', 'Berhasil Edit Data booking!');
     }
 
@@ -47,5 +54,4 @@ class AdminBookingPController extends Controller
 
         return back()->with('alert', 'Berhasil Hapus Data booking!');
     }
-
 }
