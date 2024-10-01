@@ -21,11 +21,28 @@ class Booking extends Model
     {
         parent::boot();
 
+        // Trigger notification when a new booking is created
         static::created(function ($booking) {
-            // Send notification when a new booking is created
             $admin = User::where('email', 'admin@admin.com')->first();
             if ($admin) {
                 Notification::send($admin, new TaskBookingNotification($booking));
+            }
+        });
+
+        // Trigger notification when the status is updated
+        static::updating(function ($booking) {
+            // Check if the status is changing
+            if ($booking->isDirty('status')) {
+                $oldStatus = $booking->getOriginal('status');
+                $newStatus = $booking->status;
+
+                // Only send notification for specific status changes
+                if (in_array($newStatus, ['Menunggu Konfirmasi', 'Diproses', 'Selesai', 'Dibatalkan'])) {
+                    $user = User::find($booking->user_id); // Get the user associated with the booking
+                    if ($user) {
+                        Notification::send($user, new TaskBookingNotification($booking));
+                    }
+                }
             }
         });
     }

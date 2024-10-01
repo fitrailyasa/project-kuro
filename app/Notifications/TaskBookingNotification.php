@@ -28,6 +28,7 @@ class TaskBookingNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Pesanan Baru')
+            ->line('Status Pesanan : ' . $this->task->status)
             ->line('ID Pemesanan : ' . $this->task->token)
             ->line('Tanggal Masuk : ' . date('d F Y', strtotime($this->task->created_at)))
             ->line('Tanggal Pelaksanaan : ' . date('d F Y', strtotime($this->task->datetime)))
