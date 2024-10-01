@@ -14,8 +14,7 @@
             @csrf
             @method('PUT')
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}
-                </h5>
+                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -24,16 +23,37 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Available') }}</label>
-                            <input type="number" class="form-control @error('available') is-invalid @enderror"
-                                placeholder="available" name="available" id="available"
-                                value="{{ $available->available ?? '-' }}" required>
-                            @error('available')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
+                            <label class="form-label">{{ __('Name') }}</label>
+                            <input type="number" class="form-control @error('name') is-invalid @enderror"
+                                placeholder="name" name="name" id="name" value="{{ $available->name ?? '-' }}"
+                                required>
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Profile') }}</label>
+                        <input id="image-input-0" accept="image/*" type="file"
+                            class="form-control @error('img0') is-invalid @enderror" 
+                            placeholder="img0" name="img0" id="img0">
+                        @error('img0')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <!-- Looping input image fields -->
+                    @for ($i = 1; $i <= 6; $i++)
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Image') }} {{ $i }}</label>
+                            <input id="image-input-{{ $i }}" accept="image/*" type="file"
+                                class="form-control @error('img{{ $i }}') is-invalid @enderror" 
+                                placeholder="img{{ $i }}" name="img{{ $i }}" id="img{{ $i }}">
+                            @error('img{{ $i }}')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    @endfor
                 </div>
             </div>
             <div class="modal-footer">

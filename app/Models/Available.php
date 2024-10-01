@@ -13,5 +13,5 @@ class Available extends Model
     protected $table = 'available';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['available'];
+    protected $fillable = ['name', 'img0', 'img1', 'img2', 'img3', 'img4', 'img5', 'img6'];
 }
