@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Available;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ClientPhotographerController extends Controller
 {
@@ -35,15 +36,20 @@ class ClientPhotographerController extends Controller
 
     public function checkout(Request $request)
     {
+        // Validate input
         $request->validate([
             'user_id' => 'required|max:255',
             'package_id' => 'required',
             'no_hp' => 'required',
             'location' => 'required',
-            'datetime' => 'required',
+            'datetime' => 'required|date|date_format:Y-m-d H:i:s|after_or_equal:today|before_or_equal:tomorrow',
             'price_2' => 'nullable|in:100000,300000',
         ]);
 
+        // Custom validation logic
+        $this->validateBookingTime($request->datetime);
+
+        // Decrease available photographers
         $available = Available::first();
         $available->available = $available->available - 1;
         $available->save();
@@ -64,7 +70,6 @@ class ClientPhotographerController extends Controller
         $priceCinematicVideo = $isCinematicVideo ? 550000 : 0;
 
         $total = Package::where('type', 'P')->findOrFail($request->package_id)->price;
-
 
         $total += ($quantityOrang * $pricePerOrang) +
             ($durationHours * $pricePerHour) +
@@ -90,10 +95,27 @@ class ClientPhotographerController extends Controller
             'total' => $total
         ]);
 
-        // dd($booking);
-
+        // Save the booking
         $booking->save();
 
         return redirect()->route('booking')->with('alert', 'Berhasil Order!');
+    }
+
+    /**
+     * Validate booking time to ensure it is between 10:00 and 20:00.
+     *
+     * @param string $datetime
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateBookingTime($datetime)
+    {
+        $time = \Carbon\Carbon::parse($datetime)->format('H'); // Extract the hour from datetime
+
+        // Check if the time is between 10:00 and 20:00
+        if ($time < 10 || $time > 20) {
+            throw ValidationException::withMessages([
+                'datetime' => 'Waktu pemesanan harus antara jam 10:00 dan 20:00.',
+            ]);
+        }
     }
 }
