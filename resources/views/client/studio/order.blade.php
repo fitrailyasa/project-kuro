@@ -29,11 +29,8 @@
                                     <input type="text" class="form-control" name="user_id" id="user_id"
                                         value="{{ auth()->user()->id }}" hidden>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">{{ __('No. HP') }}</label>
-                                    <input type="text" class="form-control" placeholder="0812345678" name="no_hp"
-                                        value="{{ auth()->user()->no_hp }}" id="no_hp">
-                                </div>
+                                <input type="hidden" class="form-control" placeholder="0812345678" name="no_hp"
+                                    value="{{ auth()->user()->no_hp }}" id="no_hp">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
                                     <input type="datetime-local" id="datetime" name="datetime" class="form-control"

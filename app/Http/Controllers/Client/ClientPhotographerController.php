@@ -41,7 +41,7 @@ class ClientPhotographerController extends Controller
             'no_hp' => 'required',
             'location' => 'required',
             'datetime' => 'required',
-            'price_2' => 'required|in:100000,300000',
+            'price_2' => 'nullable|in:100000,300000',
         ]);
 
         $available = Available::first();
