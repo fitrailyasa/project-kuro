@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Available;
 use App\Models\Package;
 use App\Models\Booking;
 use Illuminate\Support\Str;
@@ -13,13 +14,20 @@ class ClientPhotographerController extends Controller
     public function index()
     {
         $packages = Package::where('type', 'P')->paginate(10);
-        return view('client.photographer.index', compact('packages'));
+        $availables = Available::all();
+        return view('client.photographer.index', compact('packages', 'availables'));
     }
 
     public function show(string $id)
     {
         $package = Package::where('type', 'P')->findOrFail($id);
         return view('client.photographer.show', compact('package'));
+    }
+
+    public function detail(string $id)
+    {
+        $available = Available::findOrFail($id);
+        return view('client.photographer.detail', compact('available'));
     }
 
     public function order(string $id)
