@@ -41,6 +41,7 @@ class ClientPhotographerController extends Controller
             'no_hp' => 'required',
             'location' => 'required',
             'datetime' => 'required',
+            'price_2' => 'required|in:100000,300000',
         ]);
 
         $available = Available::first();
@@ -50,8 +51,8 @@ class ClientPhotographerController extends Controller
         $quantityOrang = (int) $request->input('price_1', 0);
         $pricePerOrang = 250000;
 
-        $isLocationChecked = $request->has('price_2');
-        $priceLocation = $isLocationChecked ? 100000 : 0;
+        $locationPrice = (int) $request->input('price_2', 0); // This should be 100000 or 300000
+        $priceLocation = $locationPrice; // Assign the location price
 
         $durationHours = (int) $request->input('price_3', 0);
         $pricePerHour = 150000;

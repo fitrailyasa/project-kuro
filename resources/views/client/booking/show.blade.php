@@ -32,7 +32,7 @@
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('No. HP') }}</label>
                                     <input type="text" class="form-control" placeholder="no_hp" name="no_hp"
-                                        id="no_hp" value="{{ $booking->no_hp ?? '-' }}" disabled>
+                                        id="no_hp" value="{{ $booking->User->no_hp ?? '-' }}" disabled>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -44,7 +44,9 @@
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Lokasi Tambahan') }}</label>
                                     <input type="text" class="form-control" placeholder="Jl. Jalan" name="price_2"
-                                        id="price_2" value="{{ $booking->price_2 ?? '-' }}" disabled>
+                                        id="price_2"
+                                        value="{{ $booking->price_2 == 100000 ? 'Bandar Lampung' : ($booking->price_2 == 300000 ? 'Jabodetabek' : '-') }}"
+                                        disabled>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">{{ __('Durasi') }}</label>
@@ -79,7 +81,7 @@
                                 <div class="card p-3">
                                     <h5>Total:</h5>
                                     <h3 class="fw-bold mb-4">Rp{{ number_format($booking->total ?? 0, 0, ',', '.') }}</h3>
-                                    <a href="https://wa.me/+628123456789" class="btn btn-success">Go to Whatsapp</a>
+                                    <a href="https://wa.me/+6287889165766" class="btn btn-success">Go to Whatsapp</a>
                                 </div>
                             </div>
                         </div>

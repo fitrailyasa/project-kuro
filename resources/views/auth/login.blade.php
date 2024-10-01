@@ -30,7 +30,10 @@
                 </form>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <p class="text-center mt-3">Belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
+                <p class="text-center mt-3">Lupa kata sandi? <a href="https://wa.me/+6287889165766">Hubungi Admin</a></p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <p>Belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
             </div>
         </div>
     </div>

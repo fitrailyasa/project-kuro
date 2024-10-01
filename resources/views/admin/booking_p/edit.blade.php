@@ -36,7 +36,7 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('No. HP') }}</label>
                             <input type="text" class="form-control" placeholder="no_hp" name="no_hp" id="no_hp"
-                                value="{{ $booking->no_hp ?? '-' }}" disabled>
+                                value="{{ $booking->User->no_hp ?? '-' }}" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -52,7 +52,8 @@
                         <div class="mb-2">
                             <label class="form-label">{{ __('Lokasi Tambahan') }}</label>
                             <input type="text" class="form-control" name="price_2" id="price_2"
-                                value="{{ $booking->price_2 ?? '-' }}" disabled>
+                                value="{{ $booking->price_2 == 100000 ? 'Bandar Lampung' : ($booking->price_2 == 300000 ? 'Jabodetabek' : '-') }}"
+                                disabled>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">{{ __('Durasi') }}</label>
@@ -86,7 +87,7 @@
                     <h4 class="text-center">Total : Rp.{{ $booking->total ?? '-' }}</h4>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary">Konfirmasi Pesanan</button>
-                <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success"><i
+                <a href="https://wa.me/+62{{ $booking->User->no_hp }}" class="btn btn-block btn-success"><i
                         class="fa fa-whatsapp"></i> Chat Penyewa</a>
                 </form>
                 @if (auth()->user()->role == 'admin')
@@ -112,7 +113,7 @@
                     <h4 class="text-center">Total : Rp.{{ $booking->total ?? '-' }}</h4>
                 </div>
                 <button type="submit" class="btn btn-block btn-primary">Pesanan Selesai</button>
-                <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success"><i
+                <a href="https://wa.me/+62{{ $booking->User->no_hp }}" class="btn btn-block btn-success"><i
                         class="fa fa-whatsapp"></i> Chat
                     Penyewa</a>
                 </form>
@@ -128,7 +129,7 @@
             </div>
         @elseif ($booking->status == 'Selesai')
             <div class="card col-md-3">
-                <a href="https://wa.me/+62{{ $booking->no_hp }}" class="btn btn-block btn-success mt-3"><i
+                <a href="https://wa.me/+62{{ $booking->User->no_hp }}" class="btn btn-block btn-success mt-3"><i
                         class="fa fa-whatsapp"></i> Chat
                     Penyewa</a>
             </div>

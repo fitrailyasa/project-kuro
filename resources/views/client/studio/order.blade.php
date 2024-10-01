@@ -23,11 +23,6 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
-                                    <input type="datetime-local" id="datetime" name="datetime" class="form-control"
-                                        required min="">
-                                </div>
-                                <div class="form-group">
                                     <label class="form-label">{{ __('Nama') }}</label>
                                     <input type="text" class="form-control" placeholder="name" name="name"
                                         id="name" value="{{ auth()->user()->name }}" disabled>
@@ -38,6 +33,13 @@
                                     <label class="form-label">{{ __('No. HP') }}</label>
                                     <input type="text" class="form-control" placeholder="0812345678" name="no_hp"
                                         value="{{ auth()->user()->no_hp }}" id="no_hp">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('Tentukan Tanggal') }}</label>
+                                    <input type="datetime-local" id="datetime" name="datetime" class="form-control"
+                                        required>
+                                    <p class="text-sm">(<span class="text-danger">*</span>Minimal pemesanan 7 hari ke depan,
+                                        waktu pemesanan antara jam 10:00 hingga 20:00)</p>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Available Photograper : ') }}
@@ -56,14 +58,6 @@
                                             onclick="increment('price_1')">+</button>
                                     </div>
                                     <input type="hidden" name="price_per_Orang" value="250000">
-                                </div>
-                                <div class="form-group">
-                                    <input type="checkbox" name="location_checkbox" id="location_checkbox"
-                                        onchange="toggleLocationInput()">
-                                    <label class="form-label">{{ __('Tambah Lokasi | Rp100.000') }}</label>
-                                    <input type="text" class="form-control" placeholder="Lokasi" name="price_2"
-                                        value="" id="price_2" disabled>
-                                    <input type="hidden" name="price_location" value="100000">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Tambah Durasi | Rp150.000/Jam') }}</label>
@@ -165,19 +159,110 @@
 
         function setMinDateTime() {
             var today = new Date();
+            // Add 7 days to today's date for the minimum booking date
+            today.setDate(today.getDate() + 7);
+
             var year = today.getFullYear();
-            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var month = ('0' + (today.getMonth() + 1)).slice(-2); // Months are zero-based
             var day = ('0' + today.getDate()).slice(-2);
-            var hours = ('0' + today.getHours()).slice(-2);
-            var minutes = ('0' + today.getMinutes()).slice(-2);
+
+            // Format the date as YYYY-MM-DDTHH:MM
+            var hours = '00'; // Set to midnight or adjust as needed
+            var minutes = '00';
 
             var minDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
 
             document.getElementById('datetime').setAttribute('min', minDateTime);
         }
 
+        function increment(id) {
+            let input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+            calculateTotal();
+        }
+
+        function decrement(id) {
+            let input = document.getElementById(id);
+            if (input.value > 0) {
+                input.value = parseInt(input.value) - 1;
+            }
+            calculateTotal();
+        }
+
+        function toggleLocationInput() {
+            const locationInput = document.getElementById('price_2');
+            locationInput.disabled = !locationInput.disabled;
+            calculateTotal();
+        }
+
+        var packagePrice = <?php echo json_encode($package->price); ?>;
+
+        function calculateTotal() {
+            const quantityOrang = document.getElementById('price_1').value;
+            const pricePerOrang = document.querySelector('input[name="price_per_Orang"]').value;
+
+            const durationHours = document.getElementById('price_3').value;
+            const pricePerHour = document.querySelector('input[name="price_per_hour"]').value;
+
+            const additionalPhotos = document.getElementById('price_4').value;
+            const pricePer10Photos = document.querySelector('input[name="price_per_10_photos"]').value;
+
+            const isCinematicVideo = document.getElementById('price_5').checked;
+            const priceCinematicVideo = isCinematicVideo ? document.getElementById('price_5').value : 0;
+
+            const isLocationChecked = document.getElementById('location_checkbox').checked;
+            const priceLocation = isLocationChecked ? document.querySelector('input[name="price_location"]').value : 0;
+
+            let add = (quantityOrang * pricePerOrang) + (durationHours * pricePerHour) +
+                (additionalPhotos * pricePer10Photos) + parseInt(priceCinematicVideo) + parseInt(priceLocation);
+
+            document.getElementById('total_cost').textContent = '+Rp ' + add.toLocaleString();
+
+            let total = packagePrice + add;
+
+            document.getElementById('total').textContent = 'Rp ' + total.toLocaleString();
+        }
+        document.getElementById('price_package').textContent = 'Rp ' + packagePrice.toLocaleString();
+
+        function setMinDateTime() {
+            var today = new Date();
+            // Set minimum date to 7 days from today
+            today.setDate(today.getDate() + 7);
+
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+
+            // Combine date and time (time set to 10:00 AM as a minimum example)
+            var minDateTime = year + '-' + month + '-' + day + 'T10:00';
+
+            // Set the min attribute for the datetime input
+            document.getElementById('datetime').setAttribute('min', minDateTime);
+        }
+
+        function validateBookingTime(event) {
+            const datetimeInput = document.getElementById('datetime');
+            const selectedDateTime = new Date(datetimeInput.value);
+
+            const selectedHours = selectedDateTime.getHours();
+            const selectedMinutes = selectedDateTime.getMinutes();
+
+            // Allow time only between 10:00 and 20:00
+            if (selectedHours < 10 || (selectedHours === 20 && selectedMinutes > 0) || selectedHours > 20) {
+                alert('Pemesanan hanya diperbolehkan antara jam 10:00 hingga 20:00.');
+                event.preventDefault(); // Prevent form submission
+                return false;
+            }
+
+            return true; // Allow form submission if time is valid
+        }
+
         window.onload = function() {
             setMinDateTime();
+
+            // Attach the form submission handler to validate time
+            const form = document.querySelector('form');
+            form.addEventListener('submit', validateBookingTime);
         };
     </script>
 
