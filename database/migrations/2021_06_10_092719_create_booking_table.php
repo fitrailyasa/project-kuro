@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('price_3')->nullable()->default(0);
             $table->integer('price_4')->nullable()->default(0);
             $table->integer('price_5')->nullable()->default(0);
+            $table->integer('total_dibayar')->nullable()->default(0);
             $table->integer('total')->nullable()->default(0);
             $table->timestamps();
         });

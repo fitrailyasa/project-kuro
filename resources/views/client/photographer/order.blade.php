@@ -45,10 +45,6 @@
                                     <p class="text-sm">(<span class="text-danger">*</span>Minimal pemesanan 7 hari ke depan,
                                         waktu pemesanan antara jam 10:00 hingga 20:00)</p>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">{{ __('Available Photograper : ') }}
-                                        {{ $available->available ?? '-' }}</label>
-                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">

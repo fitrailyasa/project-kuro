@@ -23,7 +23,15 @@ class AdminBookingPController extends Controller
     {
         $packages = Package::all();
         $booking = Booking::findOrfail($id);
-        return view('admin.booking_p.edit', compact('booking', 'packages'));
+        $status_pembayaran = 'Belum Dibayar';
+
+        if ($booking->total_dibayar >= $booking->total) {
+            $status_pembayaran = 'Lunas';
+        } else if ($booking->total_dibayar > 0) {
+            $status_pembayaran = 'Belum Lunas';
+        }
+
+        return view('admin.booking_p.edit', compact('booking', 'packages', 'status_pembayaran'));
     }
 
     public function update(Request $request, $id)
@@ -45,6 +53,20 @@ class AdminBookingPController extends Controller
         }
 
         return back()->with('alert', 'Berhasil Edit Data booking!');
+    }
+    public function payment(Request $request, $id)
+    {
+        $booking = Booking::findOrFail($id);
+
+        $request->validate([
+            'total_dibayar' => 'required',
+        ]);
+
+        $booking->update([
+            'total_dibayar' => $request->total_dibayar,
+        ]);
+
+        return back()->with('alert', 'Berhasil!');
     }
 
     public function destroy($id)

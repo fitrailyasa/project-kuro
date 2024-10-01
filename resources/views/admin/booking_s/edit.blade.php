@@ -10,6 +10,26 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
+                        <p class="text-center fw-bold">Status Pembayaran :
+                            @if ($status_pembayaran == 'Belum Dibayar')
+                                <span class="text-center badge badge-danger">{{ $status_pembayaran }}</span>
+                            @elseif($status_pembayaran == 'Belum Lunas')
+                                <span class="text-center badge badge-warning">{{ $status_pembayaran }}</span>
+                            @elseif($status_pembayaran == 'Lunas')
+                                <span class="text-center badge badge-success">{{ $status_pembayaran }}</span>
+                            @endif
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <form method="POST" action="{{ route('admin.booking_s.payment', $booking->id) }}">
+                            @csrf
+                            @method('PUT')
+                            <label for="">Jumlah Dibayar</label>
+                            <input type="number" name="total_dibayar" value="{{ $booking->total_dibayar }}">
+                            <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
                         <div class="card-header text-center mb-2">
                             <div class="fw-bold">{{ __('No. Booking') }} : {{ $booking->token ?? '-' }}</div>
                         </div>

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Models\Booking;
-use App\Models\Available;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -25,10 +24,6 @@ class ClientPhotographerController extends Controller
 
     public function order(string $id)
     {
-        $available = Available::first();
-        if ($available->available == 0) {
-            return back()->with('alert', 'Tidak Ada Photographer Yang Tersedia!');
-        }
         $package = Package::where('type', 'P')->findOrFail($id);
         return view('client.photographer.order', compact('package', 'available'));
     }
@@ -43,10 +38,6 @@ class ClientPhotographerController extends Controller
             'datetime' => 'required',
             'price_2' => 'nullable|in:100000,300000',
         ]);
-
-        $available = Available::first();
-        $available->available = $available->available - 1;
-        $available->save();
 
         $quantityOrang = (int) $request->input('price_1', 0);
         $pricePerOrang = 250000;

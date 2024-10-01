@@ -68,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/booking-photographer', [AdminBookingPController::class, 'store'])->name('booking_p.store');
     Route::get('/booking-photographer/{id}', [AdminBookingPController::class, 'edit'])->name('booking_p.edit');
     Route::put('/booking-photographer/{id}/update', [AdminBookingPController::class, 'update'])->name('booking_p.update');
+    Route::put('/booking-photographer/{id}/payment', [AdminBookingPController::class, 'payment'])->name('booking_p.payment');
     Route::delete('/booking-photographer/{id}/destroy', [AdminBookingPController::class, 'destroy'])->name('booking_p.destroy');
 
     // CRUD BOOKING S
@@ -75,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/booking-studio', [AdminBookingSController::class, 'store'])->name('booking_s.store');
     Route::get('/booking-studio/{id}', [AdminBookingSController::class, 'edit'])->name('booking_s.edit');
     Route::put('/booking-studio/{id}/update', [AdminBookingSController::class, 'update'])->name('booking_s.update');
+    Route::put('/booking-studio/{id}/payment', [AdminBookingSController::class, 'payment'])->name('booking_s.payment');
     Route::delete('/booking-studio/{id}/destroy', [AdminBookingSController::class, 'destroy'])->name('booking_s.destroy');
 
     // CRUD PACKAGE P
