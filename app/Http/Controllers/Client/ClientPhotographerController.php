@@ -90,7 +90,7 @@ class ClientPhotographerController extends Controller
             'total' => $total
         ]);
 
-        dd($booking);
+        // dd($booking);
 
         $booking->save();
 

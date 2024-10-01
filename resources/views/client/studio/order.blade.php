@@ -98,6 +98,11 @@
                                 </div>
                             </div>
                             <button class="btn aktif" type="submit">Checkout</button>
+                            @if (session('alert'))
+                                <div class="alert alert-warning" role="alert">
+                                    {{ session('alert') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>
@@ -153,24 +158,6 @@
             document.getElementById('total').textContent = 'Rp ' + total.toLocaleString();
         }
         document.getElementById('price_package').textContent = 'Rp ' + packagePrice.toLocaleString();
-
-        function setMinDateTime() {
-            var today = new Date();
-            // Add 7 days to today's date for the minimum booking date
-            today.setDate(today.getDate() + 7);
-
-            var year = today.getFullYear();
-            var month = ('0' + (today.getMonth() + 1)).slice(-2); // Months are zero-based
-            var day = ('0' + today.getDate()).slice(-2);
-
-            // Format the date as YYYY-MM-DDTHH:MM
-            var hours = '00'; // Set to midnight or adjust as needed
-            var minutes = '00';
-
-            var minDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
-
-            document.getElementById('datetime').setAttribute('min', minDateTime);
-        }
 
         function increment(id) {
             let input = document.getElementById(id);
